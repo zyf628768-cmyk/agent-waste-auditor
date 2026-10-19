@@ -2,7 +2,13 @@
 
 Amounts retain currency and origin. Unknown costs are not zero. Findings are reviewable suspicions.
 
-## Totals
+## Task economics
+
+| Task | Agent | Accepted | Cost by source | Unknown cost items | ROI |
+| --- | --- | --- | --- | --- | --- |
+| SYNTHETIC-success | codex | True | USD actual=0.02, estimated=0.3, manual=6 | 0 | scenario\_estimate |
+
+<details><summary>Structured evidence: Totals</summary>
 
 <pre>{
   &quot;USD&quot;: {
@@ -11,8 +17,9 @@ Amounts retain currency and origin. Unknown costs are not zero. Findings are rev
     &quot;manual&quot;: &quot;6&quot;
   }
 }</pre>
+</details>
 
-## Coverage
+<details><summary>Structured evidence: Coverage</summary>
 
 <pre>{
   &quot;events&quot;: 3,
@@ -21,8 +28,22 @@ Amounts retain currency and origin. Unknown costs are not zero. Findings are rev
   &quot;warnings&quot;: [],
   &quot;scope&quot;: &quot;specified files only; unobserved costs cannot be inferred&quot;
 }</pre>
+</details>
 
-## Tasks
+<details><summary>Structured evidence: Analysis Settings</summary>
+
+<pre>{
+  &quot;schema_version&quot;: &quot;1.0&quot;,
+  &quot;repetition_threshold&quot;: 3,
+  &quot;window_seconds&quot;: 3600,
+  &quot;context_tokens&quot;: 10000,
+  &quot;high_cost_thresholds&quot;: {
+    &quot;USD&quot;: &quot;1&quot;
+  }
+}</pre>
+</details>
+
+<details><summary>Structured evidence: Tasks</summary>
 
 <pre>[
   {
@@ -81,9 +102,15 @@ Amounts retain currency and origin. Unknown costs are not zero. Findings are rev
     &quot;cost_coverage&quot;: {
       &quot;known_events&quot;: 2,
       &quot;cost_bearing_events&quot;: 2,
-      &quot;complete&quot;: true
+      &quot;complete&quot;: true,
+      &quot;human_effort_known&quot;: true,
+      &quot;monetary_basis&quot;: [
+        &quot;actual&quot;,
+        &quot;estimated&quot;
+      ],
+      &quot;unknown_reasons&quot;: []
     },
-    &quot;elapsed_seconds&quot;: &quot;12.0&quot;,
+    &quot;elapsed_seconds&quot;: &quot;12&quot;,
     &quot;duration_sum_ms&quot;: 5000,
     &quot;queue_ms&quot;: 0,
     &quot;human_wait_ms&quot;: 0,
@@ -94,7 +121,7 @@ Amounts retain currency and origin. Unknown costs are not zero. Findings are rev
       &quot;baseline_cost&quot;: &quot;36&quot;,
       &quot;total_cost&quot;: &quot;6.32&quot;,
       &quot;net_savings&quot;: &quot;29.68&quot;,
-      &quot;roi&quot;: &quot;4.696202531645569620253164557&quot;,
+      &quot;roi&quot;: &quot;4.6962025316455696202531645569620253164556962025316455696202531645569620253164556962025316455696202531645569620253164556962025316&quot;,
       &quot;assumptions&quot;: [
         &quot;user-entered baseline and human effort&quot;,
         &quot;rework minutes exclude other human minutes&quot;,
@@ -103,12 +130,14 @@ Amounts retain currency and origin. Unknown costs are not zero. Findings are rev
     }
   }
 ]</pre>
+</details>
 
-## Findings
+<details><summary>Structured evidence: Findings</summary>
 
 <pre>[]</pre>
+</details>
 
-## High Cost Steps
+<details><summary>Structured evidence: High Cost Steps</summary>
 
 <pre>[
   {
@@ -133,8 +162,9 @@ Amounts retain currency and origin. Unknown costs are not zero. Findings are rev
     &quot;source&quot;: &quot;event&quot;
   }
 ]</pre>
+</details>
 
-## Trend
+<details><summary>Structured evidence: Trend</summary>
 
 <pre>[
   {
@@ -148,29 +178,31 @@ Amounts retain currency and origin. Unknown costs are not zero. Findings are rev
     }
   }
 ]</pre>
+</details>
 
-## Timeline
+<details><summary>Structured evidence: Timeline</summary>
 
 <pre>[
   {
     &quot;id&quot;: &quot;SYNTHETIC-s-model&quot;,
     &quot;task_id&quot;: &quot;SYNTHETIC-success&quot;,
-    &quot;timestamp&quot;: &quot;2026-10-01T09:00:00Z&quot;,
+    &quot;timestamp&quot;: &quot;2026-10-01T09:00:00+00:00&quot;,
     &quot;kind&quot;: &quot;model&quot;,
     &quot;status&quot;: &quot;success&quot;
   },
   {
     &quot;id&quot;: &quot;SYNTHETIC-s-tool&quot;,
     &quot;task_id&quot;: &quot;SYNTHETIC-success&quot;,
-    &quot;timestamp&quot;: &quot;2026-10-01T09:00:06Z&quot;,
+    &quot;timestamp&quot;: &quot;2026-10-01T09:00:06+00:00&quot;,
     &quot;kind&quot;: &quot;tool&quot;,
     &quot;status&quot;: &quot;success&quot;
   },
   {
     &quot;id&quot;: &quot;SYNTHETIC-s-end&quot;,
     &quot;task_id&quot;: &quot;SYNTHETIC-success&quot;,
-    &quot;timestamp&quot;: &quot;2026-10-01T09:00:12Z&quot;,
+    &quot;timestamp&quot;: &quot;2026-10-01T09:00:12+00:00&quot;,
     &quot;kind&quot;: &quot;task&quot;,
     &quot;status&quot;: &quot;success&quot;
   }
 ]</pre>
+</details>

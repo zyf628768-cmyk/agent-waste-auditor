@@ -1,0 +1,7 @@
+{
+  "schema_version": "1.0",
+  "repetition_threshold": 4,
+  "window_seconds": 1800,
+  "context_tokens": 20000,
+  "high_cost_thresholds": {"USD": "1"}
+}

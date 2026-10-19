@@ -6,6 +6,8 @@ An MIT-licensed, local-first CLI and Agent Skill for auditing AI task economics:
 
 **v0.1.0 is an evidence-preserving MVP.** Findings are suspicions for human review, not proof of waste. Unknown cost never becomes zero. Native Codex/Claude adapters are experimental structural profiles, tested with SYNTHETIC fixtures; no claim of universal log compatibility or billing reconciliation.
 
+Pre-release review added stricter schemas and parsing, atomic output, configurable detection windows, normalized comparison metrics, installed-wheel validation, and a publication script that gates a Release on all 12 CI jobs for the exact source commit. Local test and benchmark evidence are linked in [validation](docs/validation.md).
+
 ## Install and run
 
 From this source directory:
@@ -41,6 +43,8 @@ The MVP detects at least three identical failed calls, repeated reads/calls, A/B
 
 There is no automatic recoverable-waste dollar total: the same steps may appear in multiple findings, and a repetition can be necessary. See [methodology](docs/methodology.md) for thresholds and limitations.
 
+Repetition defaults to a one-hour observation window; verified progress or justified checks break candidate sequences. Configure `analyze --rules examples/rules.json` (also supported by compare) to change repetition/context thresholds, window size and **per-currency** high-cost review thresholds. Only USD 1 is configured by default; another currency is never implicitly equated to it. Settings are included in each audit for reproducibility.
+
 ## Compare matching tasks
 
 ```sh
@@ -49,7 +53,7 @@ agentwaste report comparison.json --format html -o comparison.html
 # Also supported: --by model, --by prompt_strategy, --by workflow
 ```
 
-Groups require the same user-defined task key, difficulty and acceptance ID, and separate complete/partial observed cost coverage. Missing matching metadata is excluded. Success rate denominator includes only known outcomes, with unknown count recoverable from attempts minus known outcomes. Effort includes human and rework minutes; rework event count is separate. Comparisons are descriptive, with no global ranking or causal claim. Users must ensure task keys refer to equivalent work. For model/strategy/workflow experiments supply the corresponding fields in task metadata. A mixed-model task cannot get an inferred single-model label.
+Groups require the same user-defined task key, difficulty and acceptance ID, and separate observed cost completeness, monetary basis, human-effort coverage, unknown-cost reasons and currencies. Missing matching metadata is excluded. Each variant reports total costs **and per-attempt/per-success costs**, accepted successes, unknown outcomes, human/rework involvement and median observed duration. This prevents unequal attempt counts from turning aggregate spend into a misleading ranking. Success rate denominator includes only known outcomes. Comparisons remain descriptive with no global ranking or causal claim. Users must ensure task keys refer to equivalent work. For model/strategy/workflow experiments supply the corresponding fields in task metadata. Mixed or partially missing model evidence cannot produce an inferred single-model label. Comparison CSV exports these metrics rather than an empty charge table.
 
 ## Existing tools and scope
 
@@ -74,11 +78,16 @@ All fixtures, labels, rates and example charges are **SYNTHETIC**. `python scrip
 
 JSON/Markdown/HTML reports, CSV charge exports and canonical imports are in `examples/reports/`. HTML works offline with currency-separated composition/trend bars and expandable evidence, timeline, high-cost steps and coverage. No live Web Dashboard server is included.
 
+JSON report rendering validates the full nested report shape and financial/evidence consistency locally before output. Parsing rejects duplicate JSON keys, nonfinite constants, malformed/duplicate CSV headers and inconsistent CSV row widths. Useful parser errors show safe diagnostic codes and source line numbers without source contents. Report replacement is atomic, including failure cleanup; existing reports survive a failed write. Financial arithmetic uses a local 128-digit Decimal context, independent of the calling application's precision settings; extreme numeric ranges are rejected rather than silently overflowing.
+
 ```sh
 python -m pip install '.[test]' build
 python -m unittest discover -s tests -v
 python scripts/demo.py
 python -m build
+# After installing the resulting wheel outside the checkout:
+python scripts/smoke_wheel.py
+python scripts/benchmark.py
 ```
 
 GitHub Actions defines Python 3.11–3.14 on Windows, Linux and macOS. Only the locally executed environment can be claimed as passed; see [validation](docs/validation.md) and [release checklist](docs/release.md).

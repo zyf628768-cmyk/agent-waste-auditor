@@ -17,7 +17,7 @@
       "status": "success",
       "synthetic": true,
       "task_id": "SYNTHETIC-success",
-      "timestamp": "2026-10-01T09:00:00Z",
+      "timestamp": "2026-10-01T09:00:00+00:00",
       "source_line": 2
     },
     {
@@ -33,7 +33,7 @@
       "status": "success",
       "synthetic": true,
       "task_id": "SYNTHETIC-success",
-      "timestamp": "2026-10-01T09:00:06Z",
+      "timestamp": "2026-10-01T09:00:06+00:00",
       "source_line": 3
     },
     {
@@ -44,7 +44,7 @@
       "status": "success",
       "synthetic": true,
       "task_id": "SYNTHETIC-success",
-      "timestamp": "2026-10-01T09:00:12Z",
+      "timestamp": "2026-10-01T09:00:12+00:00",
       "source_line": 4
     }
   ],

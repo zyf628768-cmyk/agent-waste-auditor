@@ -3,22 +3,6 @@
   "$id": "https://agentwaste.invalid/schemas/audit.schema.json",
   "type": "object",
   "additionalProperties": false,
-  "required": [
-    "schema_version",
-    "report_type",
-    "synthetic",
-    "totals",
-    "tasks",
-    "charges",
-    "findings",
-    "coverage",
-    "timeline",
-    "trend",
-    "high_cost_steps",
-    "successful_tasks",
-    "average_cost_per_success",
-    "average_cost_definition"
-  ],
   "properties": {
     "schema_version": {
       "const": "1.0"
@@ -29,6 +13,46 @@
     "synthetic": {
       "type": "boolean"
     },
+    "analysis_settings": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0"
+        },
+        "repetition_threshold": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "window_seconds": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "context_tokens": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "high_cost_thresholds": {
+          "type": "object",
+          "propertyNames": {
+            "type": "string",
+            "pattern": "^[A-Z]{3}$"
+          },
+          "additionalProperties": {
+            "type": "string",
+            "pattern": "^\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?$",
+            "format": "money"
+          }
+        }
+      },
+      "required": [
+        "schema_version",
+        "repetition_threshold",
+        "window_seconds",
+        "context_tokens",
+        "high_cost_thresholds"
+      ]
+    },
     "totals": {
       "type": "object",
       "propertyNames": {
@@ -37,54 +61,174 @@
       },
       "additionalProperties": {
         "type": "object",
-        "required": [
-          "actual",
-          "estimated",
-          "manual"
-        ],
         "additionalProperties": false,
         "properties": {
           "actual": {
             "type": "string",
-            "pattern": "^\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?$"
+            "pattern": "^\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?$",
+            "format": "money"
           },
           "estimated": {
             "type": "string",
-            "pattern": "^\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?$"
+            "pattern": "^\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?$",
+            "format": "money"
           },
           "manual": {
             "type": "string",
-            "pattern": "^\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?$"
+            "pattern": "^\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?$",
+            "format": "money"
           }
-        }
+        },
+        "required": [
+          "actual",
+          "estimated",
+          "manual"
+        ]
       }
     },
     "tasks": {
       "type": "array",
       "items": {
         "type": "object",
-        "required": [
-          "task_id",
-          "agent",
-          "status",
-          "totals",
-          "unknown_costs",
-          "roi",
-          "cost_coverage"
-        ],
+        "additionalProperties": false,
         "properties": {
           "task_id": {
-            "type": "string"
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160
           },
           "agent": {
-            "type": "string"
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160
+          },
+          "task_key": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 160
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "difficulty": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 160
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "acceptance_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 160
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "model": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 160
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "prompt_strategy": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 160
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "workflow": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 160
+              },
+              {
+                "type": "null"
+              }
+            ]
           },
           "status": {
             "enum": [
               "success",
               "failed",
-              "running",
-              "unknown"
+              "unknown",
+              "running"
+            ]
+          },
+          "accepted": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "synthetic": {
+            "type": "boolean"
+          },
+          "human_minutes": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?$",
+                "format": "money"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "rework_minutes": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?$",
+                "format": "money"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "elapsed_seconds": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?$",
+                "format": "money"
+              },
+              {
+                "type": "null"
+              }
             ]
           },
           "totals": {
@@ -95,42 +239,136 @@
             },
             "additionalProperties": {
               "type": "object",
-              "required": [
-                "actual",
-                "estimated",
-                "manual"
-              ],
               "additionalProperties": false,
               "properties": {
                 "actual": {
                   "type": "string",
-                  "pattern": "^\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?$"
+                  "pattern": "^\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?$",
+                  "format": "money"
                 },
                 "estimated": {
                   "type": "string",
-                  "pattern": "^\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?$"
+                  "pattern": "^\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?$",
+                  "format": "money"
                 },
                 "manual": {
                   "type": "string",
-                  "pattern": "^\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?$"
+                  "pattern": "^\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?$",
+                  "format": "money"
                 }
+              },
+              "required": [
+                "actual",
+                "estimated",
+                "manual"
+              ]
+            }
+          },
+          "category_totals": {
+            "type": "object",
+            "propertyNames": {
+              "enum": [
+                "model",
+                "tool",
+                "human",
+                "failure",
+                "rework",
+                "wait",
+                "quality"
+              ]
+            },
+            "additionalProperties": {
+              "type": "object",
+              "propertyNames": {
+                "type": "string",
+                "pattern": "^[A-Z]{3}$"
+              },
+              "additionalProperties": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "actual": {
+                    "type": "string",
+                    "pattern": "^\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?$",
+                    "format": "money"
+                  },
+                  "estimated": {
+                    "type": "string",
+                    "pattern": "^\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?$",
+                    "format": "money"
+                  },
+                  "manual": {
+                    "type": "string",
+                    "pattern": "^\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?$",
+                    "format": "money"
+                  }
+                },
+                "required": [
+                  "actual",
+                  "estimated",
+                  "manual"
+                ]
               }
             }
           },
+          "failed_step_costs": {
+            "type": "object",
+            "propertyNames": {
+              "type": "string",
+              "pattern": "^[A-Z]{3}$"
+            },
+            "additionalProperties": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "actual": {
+                  "type": "string",
+                  "pattern": "^\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?$",
+                  "format": "money"
+                },
+                "estimated": {
+                  "type": "string",
+                  "pattern": "^\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?$",
+                  "format": "money"
+                },
+                "manual": {
+                  "type": "string",
+                  "pattern": "^\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?$",
+                  "format": "money"
+                }
+              },
+              "required": [
+                "actual",
+                "estimated",
+                "manual"
+              ]
+            }
+          },
           "unknown_costs": {
-            "type": "array"
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "event_id": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 160
+                },
+                "reason": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "event_id",
+                "reason"
+              ]
+            }
           },
           "cost_coverage": {
             "type": "object",
-            "required": [
-              "known_events",
-              "cost_bearing_events",
-              "complete"
-            ],
+            "additionalProperties": false,
             "properties": {
-              "complete": {
-                "type": "boolean"
-              },
               "known_events": {
                 "type": "integer",
                 "minimum": 0
@@ -138,44 +376,170 @@
               "cost_bearing_events": {
                 "type": "integer",
                 "minimum": 0
+              },
+              "complete": {
+                "type": "boolean"
+              },
+              "human_effort_known": {
+                "type": "boolean"
+              },
+              "monetary_basis": {
+                "type": "array",
+                "items": {
+                  "enum": [
+                    "actual",
+                    "estimated",
+                    "manual"
+                  ]
+                }
+              },
+              "unknown_reasons": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
               }
-            }
+            },
+            "required": [
+              "known_events",
+              "cost_bearing_events",
+              "complete",
+              "human_effort_known",
+              "monetary_basis",
+              "unknown_reasons"
+            ]
+          },
+          "duration_sum_ms": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "queue_ms": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "human_wait_ms": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "rework_events": {
+            "type": "integer",
+            "minimum": 0
           },
           "roi": {
-            "type": "object",
-            "required": [
-              "status"
-            ],
-            "properties": {
-              "status": {
-                "enum": [
-                  "unavailable",
-                  "scenario_estimate",
-                  "verified_basis"
+            "anyOf": [
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "status": {
+                    "const": "unavailable"
+                  },
+                  "reason": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "status",
+                  "reason"
+                ]
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "status": {
+                    "enum": [
+                      "scenario_estimate",
+                      "verified_basis"
+                    ]
+                  },
+                  "currency": {
+                    "type": "string",
+                    "pattern": "^[A-Z]{3}$"
+                  },
+                  "baseline_cost": {
+                    "type": "string",
+                    "pattern": "^\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?$",
+                    "format": "money"
+                  },
+                  "total_cost": {
+                    "type": "string",
+                    "pattern": "^\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?$",
+                    "format": "money"
+                  },
+                  "net_savings": {
+                    "type": "string",
+                    "pattern": "^-?\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?$"
+                  },
+                  "roi": {
+                    "anyOf": [
+                      {
+                        "type": "string",
+                        "pattern": "^-?\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?$"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "assumptions": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "required": [
+                  "status",
+                  "currency",
+                  "baseline_cost",
+                  "total_cost",
+                  "net_savings",
+                  "roi",
+                  "assumptions"
                 ]
               }
-            }
+            ]
           }
-        }
+        },
+        "required": [
+          "task_id",
+          "agent",
+          "task_key",
+          "difficulty",
+          "acceptance_id",
+          "model",
+          "prompt_strategy",
+          "workflow",
+          "status",
+          "accepted",
+          "synthetic",
+          "human_minutes",
+          "rework_minutes",
+          "elapsed_seconds",
+          "totals",
+          "category_totals",
+          "failed_step_costs",
+          "unknown_costs",
+          "cost_coverage",
+          "duration_sum_ms",
+          "queue_ms",
+          "human_wait_ms",
+          "rework_events",
+          "roi"
+        ]
       }
     },
     "charges": {
       "type": "array",
       "items": {
         "type": "object",
-        "required": [
-          "event_id",
-          "task_id",
-          "category",
-          "amount",
-          "origin",
-          "currency"
-        ],
         "additionalProperties": false,
         "properties": {
           "amount": {
             "type": "string",
-            "pattern": "^\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?$"
+            "pattern": "^\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?$",
+            "format": "money"
           },
           "currency": {
             "type": "string",
@@ -186,12 +550,6 @@
               "actual",
               "estimated",
               "manual"
-            ]
-          },
-          "source": {
-            "enum": [
-              "event",
-              "task_metadata"
             ]
           },
           "category": {
@@ -206,74 +564,157 @@
             ]
           },
           "event_id": {
-            "type": "string"
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160
           },
           "task_id": {
-            "type": "string"
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160
           },
           "price_id": {
-            "type": "string"
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160
           },
           "failed": {
             "type": "boolean"
+          },
+          "source": {
+            "enum": [
+              "event",
+              "task_metadata"
+            ]
           }
-        }
+        },
+        "required": [
+          "amount",
+          "currency",
+          "origin",
+          "category",
+          "event_id",
+          "task_id",
+          "source"
+        ]
       }
     },
     "findings": {
       "type": "array",
       "items": {
         "type": "object",
-        "required": [
-          "rule",
-          "task_id",
-          "conclusion",
-          "explanation",
-          "recommendation",
-          "evidence"
-        ],
+        "additionalProperties": false,
         "properties": {
+          "rule": {
+            "type": "string"
+          },
+          "severity": {
+            "const": "review"
+          },
+          "task_id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160
+          },
           "conclusion": {
             "const": "suspected_inefficiency"
           },
+          "explanation": {
+            "type": "string"
+          },
+          "recommendation": {
+            "type": "string"
+          },
           "evidence": {
             "type": "array",
-            "minItems": 1,
             "items": {
               "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "event_id": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 160
+                },
+                "source_line": {
+                  "anyOf": [
+                    {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "status": {
+                  "enum": [
+                    "success",
+                    "failed",
+                    "timeout",
+                    "unknown",
+                    "running"
+                  ]
+                },
+                "signature": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{64}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              },
               "required": [
                 "event_id",
                 "source_line",
                 "status",
                 "signature"
-              ],
-              "properties": {
-                "event_id": {
-                  "type": "string"
-                },
-                "source_line": {
-                  "type": [
-                    "integer",
-                    "null"
-                  ]
-                },
-                "status": {
-                  "type": "string"
-                },
-                "signature": {
-                  "type": [
-                    "string",
-                    "null"
-                  ]
-                }
-              }
-            }
+              ]
+            },
+            "minItems": 1
           }
-        }
+        },
+        "required": [
+          "rule",
+          "severity",
+          "task_id",
+          "conclusion",
+          "explanation",
+          "recommendation",
+          "evidence"
+        ]
       }
     },
     "coverage": {
       "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "events": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "tasks": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "unknown_cost_items": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "warnings": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "scope": {
+          "type": "string"
+        }
+      },
       "required": [
         "events",
         "tasks",
@@ -286,6 +727,41 @@
       "type": "array",
       "items": {
         "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160
+          },
+          "task_id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "kind": {
+            "enum": [
+              "model",
+              "tool",
+              "human",
+              "wait",
+              "task"
+            ]
+          },
+          "status": {
+            "enum": [
+              "success",
+              "failed",
+              "timeout",
+              "unknown",
+              "running"
+            ]
+          }
+        },
         "required": [
           "id",
           "task_id",
@@ -298,11 +774,11 @@
       "type": "array",
       "items": {
         "type": "object",
-        "required": [
-          "date_utc",
-          "totals"
-        ],
+        "additionalProperties": false,
         "properties": {
+          "date_utc": {
+            "type": "string"
+          },
           "totals": {
             "type": "object",
             "propertyNames": {
@@ -311,48 +787,48 @@
             },
             "additionalProperties": {
               "type": "object",
-              "required": [
-                "actual",
-                "estimated",
-                "manual"
-              ],
               "additionalProperties": false,
               "properties": {
                 "actual": {
                   "type": "string",
-                  "pattern": "^\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?$"
+                  "pattern": "^\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?$",
+                  "format": "money"
                 },
                 "estimated": {
                   "type": "string",
-                  "pattern": "^\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?$"
+                  "pattern": "^\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?$",
+                  "format": "money"
                 },
                 "manual": {
                   "type": "string",
-                  "pattern": "^\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?$"
+                  "pattern": "^\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?$",
+                  "format": "money"
                 }
-              }
+              },
+              "required": [
+                "actual",
+                "estimated",
+                "manual"
+              ]
             }
           }
-        }
+        },
+        "required": [
+          "date_utc",
+          "totals"
+        ]
       }
     },
     "high_cost_steps": {
       "type": "array",
       "items": {
         "type": "object",
-        "required": [
-          "event_id",
-          "task_id",
-          "category",
-          "amount",
-          "origin",
-          "currency"
-        ],
         "additionalProperties": false,
         "properties": {
           "amount": {
             "type": "string",
-            "pattern": "^\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?$"
+            "pattern": "^\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?$",
+            "format": "money"
           },
           "currency": {
             "type": "string",
@@ -363,12 +839,6 @@
               "actual",
               "estimated",
               "manual"
-            ]
-          },
-          "source": {
-            "enum": [
-              "event",
-              "task_metadata"
             ]
           },
           "category": {
@@ -383,18 +853,39 @@
             ]
           },
           "event_id": {
-            "type": "string"
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160
           },
           "task_id": {
-            "type": "string"
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160
           },
           "price_id": {
-            "type": "string"
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160
           },
           "failed": {
             "type": "boolean"
+          },
+          "source": {
+            "enum": [
+              "event",
+              "task_metadata"
+            ]
           }
-        }
+        },
+        "required": [
+          "amount",
+          "currency",
+          "origin",
+          "category",
+          "event_id",
+          "task_id",
+          "source"
+        ]
       }
     },
     "successful_tasks": {
@@ -402,17 +893,43 @@
       "minimum": 0
     },
     "average_cost_per_success": {
-      "type": [
-        "object",
-        "null"
-      ],
-      "additionalProperties": {
-        "type": "string",
-        "pattern": "^\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?$"
-      }
+      "anyOf": [
+        {
+          "type": "object",
+          "propertyNames": {
+            "type": "string",
+            "pattern": "^[A-Z]{3}$"
+          },
+          "additionalProperties": {
+            "type": "string",
+            "pattern": "^\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?$",
+            "format": "money"
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
     },
     "average_cost_definition": {
       "type": "string"
     }
-  }
+  },
+  "required": [
+    "schema_version",
+    "report_type",
+    "synthetic",
+    "analysis_settings",
+    "totals",
+    "tasks",
+    "charges",
+    "findings",
+    "coverage",
+    "timeline",
+    "trend",
+    "high_cost_steps",
+    "successful_tasks",
+    "average_cost_per_success",
+    "average_cost_definition"
+  ]
 }

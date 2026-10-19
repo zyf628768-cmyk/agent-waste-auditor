@@ -3,13 +3,14 @@ import hashlib
 import json
 import re
 from datetime import datetime
-from decimal import Decimal, InvalidOperation
+from decimal import Decimal, InvalidOperation, localcontext, Context, ROUND_HALF_EVEN, DivisionByZero, Overflow
+from functools import wraps
 
 VERSION = "1.0"
 
 
 def money(value):
-    if isinstance(value, bool):
+    if isinstance(value, bool) or len(str(value)) > 320:
         raise ValueError("invalid decimal")
     try:
         result = Decimal(str(value))
@@ -17,24 +18,44 @@ def money(value):
         raise ValueError("invalid decimal") from None
     if not result.is_finite() or result < 0:
         raise ValueError("decimal must be finite and nonnegative")
+    if len(result.as_tuple().digits) > 256 or result > Decimal("1e24") or result.as_tuple().exponent < -256:
+        raise ValueError("decimal outside supported financial precision/range")
     return result
+
+
+def financial(function):
+    """Stable financial precision, independent of a caller's Decimal context."""
+    @wraps(function)
+    def wrapped(*args, **kwargs):
+        with localcontext(Context(prec=128, rounding=ROUND_HALF_EVEN, Emin=-999999, Emax=999999,
+                                  traps=[InvalidOperation, DivisionByZero, Overflow])):
+            return function(*args, **kwargs)
+    return wrapped
 
 
 def redact(value):
     """Defense in depth; arbitrary text is additionally excluded by field allowlists."""
     text = str(value)
-    text = re.sub(r"(?i)(?:sk-[\w-]+|bearer\s+\S+|[\w.+-]+@[\w.-]+\.[a-z]{2,})", "[REDACTED]", text)
+    text = re.sub(r"(?i)(?:(?<![A-Za-z0-9])sk-[\w-]+|bearer\s+\S+|[\w.+-]+@[\w.-]+\.[a-z]{2,})", "[REDACTED]", text)
     text = re.sub(r"(?i)(api[_-]?key|password|cookie|secret|token)\s*[:=]\s*[^\s,;]+", r"\1=[REDACTED]", text)
     return text
 
 
 def label(value):
+    if not isinstance(value, str) or not value.strip() or len(value) > 160 or any(ord(c) < 32 for c in value):
+        raise ValueError("label must be a nonempty string of at most 160 printable characters")
     return redact(value)[:160]
 
 
 def fingerprint(value):
     # Hash only after redaction, never serialize the original value.
-    normalized = json.dumps(value, sort_keys=True, ensure_ascii=False, separators=(",", ":"))
+    def clean(item):
+        if isinstance(item, dict):
+            return {str(k): "[REDACTED]" if re.fullmatch(r"(?i)(?:api[_-]?key|authorization|password|cookie|secret|(?:access|refresh)[_-]?token)", str(k)) else clean(v) for k, v in item.items()}
+        if isinstance(item, list):
+            return [clean(v) for v in item]
+        return redact(item) if isinstance(item, str) else item
+    normalized = json.dumps(clean(value), sort_keys=True, ensure_ascii=False, separators=(",", ":"))
     return hashlib.sha256(redact(normalized).encode()).hexdigest()
 
 
@@ -44,16 +65,20 @@ def timestamp(value):
     dt = datetime.fromisoformat(value.replace("Z", "+00:00"))
     if dt.tzinfo is None:
         raise ValueError("timestamp requires timezone")
+    if dt.utcoffset().total_seconds() % 60:
+        raise ValueError("timezone offset must use whole minutes")
     return dt
 
 
 FIELDS = {"schema_version", "id", "task_id", "agent", "timestamp", "kind", "status",
           "model", "input_tokens", "output_tokens", "cached_tokens", "cache_write_tokens",
           "amount", "currency", "origin", "category", "duration_ms", "queue_ms", "human_wait_ms",
-          "action", "signature", "context_signature", "progress", "retry_reason", "synthetic", "source_line"}
+          "action", "signature", "context_signature", "progress", "retry_reason", "synthetic", "source_line", "usage_complete"}
 
 
 def event(data):
+    if not isinstance(data, dict):
+        raise ValueError("event must be an object")
     if data.get("schema_version") != VERSION:
         raise ValueError("unsupported event schema_version")
     required = ("id", "task_id", "agent", "timestamp", "kind")
@@ -63,6 +88,7 @@ def event(data):
     if data["kind"] not in {"model", "tool", "human", "wait", "task"}:
         raise ValueError("unsupported event kind")
     result = {k: v for k, v in data.items() if k in FIELDS and v is not None and v != ""}
+    result["timestamp"] = timestamp(data["timestamp"]).isoformat()
     for k in ("id", "task_id", "agent", "model", "action"):
         if k in result:
             result[k] = label(result[k])
@@ -75,9 +101,13 @@ def event(data):
             if isinstance(value, bool) or not re.fullmatch(r"\d+", str(value)):
                 raise ValueError("counts must be nonnegative integers")
             result[k] = int(value)
-    if result.get("cached_tokens", 0) + result.get("cache_write_tokens", 0) > result.get("input_tokens", 0):
+    if "input_tokens" in result and result.get("cached_tokens", 0) + result.get("cache_write_tokens", 0) > result["input_tokens"]:
         raise ValueError("cache tokens exceed inclusive input tokens")
+    if any(result.get(k, 0) > 10**15 for k in ("input_tokens", "output_tokens", "cached_tokens", "cache_write_tokens", "duration_ms", "queue_ms", "human_wait_ms")):
+        raise ValueError("event count outside supported range")
     if "amount" in result:
+        if data["kind"] == "task" and not result.get("category"):
+            raise ValueError("task marker charge requires explicit cost category")
         result["amount"] = str(money(result["amount"]))
         if result.get("origin") not in {"actual", "estimated", "manual"}:
             raise ValueError("amount requires origin")
@@ -89,11 +119,11 @@ def event(data):
         raise ValueError("invalid currency")
     if result.get("status", "unknown") not in {"success", "failed", "timeout", "unknown", "running"}:
         raise ValueError("invalid status")
-    if result.get("category", "model") not in {"model", "tool", "failure", "rework", "wait", "quality"}:
+    if result.get("category", "model") not in {"model", "tool", "human", "failure", "rework", "wait", "quality"}:
         raise ValueError("invalid category")
     if result.get("retry_reason", "unknown") not in {"unknown", "transient", "user_requested", "idempotent_check"}:
         raise ValueError("invalid retry reason")
-    for k in ("synthetic", "progress"):
+    for k in ("synthetic", "progress", "usage_complete"):
         if k in result and not isinstance(result[k], bool):
             if result[k] not in ("true", "false"):
                 raise ValueError("invalid boolean")
@@ -102,6 +132,8 @@ def event(data):
 
 
 def tasks_validate(tasks):
+    if not isinstance(tasks, list):
+        raise ValueError("tasks must be an array")
     allowed = {"task_id", "agent", "task_key", "difficulty", "acceptance_id", "status", "accepted",
                "baseline_minutes", "human_minutes", "rework_minutes", "hourly_rate", "currency", "baseline_verified", "synthetic",
                "model", "prompt_strategy", "workflow"}
@@ -109,6 +141,8 @@ def tasks_validate(tasks):
     seen = set()
     normalized_ids = set()
     for item in tasks:
+        if not isinstance(item, dict) or not isinstance(item.get("task_id"), str):
+            raise ValueError("task must have a string id")
         if not item.get("task_id") or item["task_id"] in seen:
             raise ValueError("task ids required and unique")
         seen.add(item["task_id"])
@@ -124,6 +158,8 @@ def tasks_validate(tasks):
                 raise ValueError("task booleans must be JSON booleans")
         if task.get("status", "unknown") not in {"success", "failed", "running", "unknown"}:
             raise ValueError("invalid task status")
+        if task.get("accepted") is True and task.get("status") != "success":
+            raise ValueError("accepted task must have success status")
         if "hourly_rate" in task and not re.fullmatch(r"[A-Z]{3}", task.get("currency", "")):
             raise ValueError("hourly rate requires currency")
         if "currency" in task and not re.fullmatch(r"[A-Z]{3}", task["currency"]):

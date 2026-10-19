@@ -2,6 +2,15 @@
   "schema_version": "1.0",
   "report_type": "audit",
   "synthetic": true,
+  "analysis_settings": {
+    "schema_version": "1.0",
+    "repetition_threshold": 3,
+    "window_seconds": 3600,
+    "context_tokens": 10000,
+    "high_cost_thresholds": {
+      "USD": "1"
+    }
+  },
   "totals": {
     "USD": {
       "actual": "0.04",
@@ -66,9 +75,15 @@
       "cost_coverage": {
         "known_events": 2,
         "cost_bearing_events": 2,
-        "complete": true
+        "complete": true,
+        "human_effort_known": true,
+        "monetary_basis": [
+          "actual",
+          "estimated"
+        ],
+        "unknown_reasons": []
       },
-      "elapsed_seconds": "22.0",
+      "elapsed_seconds": "22",
       "duration_sum_ms": 0,
       "queue_ms": 0,
       "human_wait_ms": 0,
@@ -79,7 +94,7 @@
         "baseline_cost": "36",
         "total_cost": "12.65",
         "net_savings": "23.35",
-        "roi": "1.845849802371541501976284585",
+        "roi": "1.8458498023715415019762845849802371541501976284584980237154150197628458498023715415019762845849802371541501976284584980237154150",
         "assumptions": [
           "user-entered baseline and human effort",
           "rework minutes exclude other human minutes",
@@ -141,21 +156,21 @@
     {
       "id": "SYNTHETIC-c-model",
       "task_id": "SYNTHETIC-claude",
-      "timestamp": "2026-10-01T09:00:00Z",
+      "timestamp": "2026-10-01T09:00:00+00:00",
       "kind": "model",
       "status": "success"
     },
     {
       "id": "SYNTHETIC-c-tool",
       "task_id": "SYNTHETIC-claude",
-      "timestamp": "2026-10-01T09:00:10Z",
+      "timestamp": "2026-10-01T09:00:10+00:00",
       "kind": "tool",
       "status": "success"
     },
     {
       "id": "SYNTHETIC-c-end",
       "task_id": "SYNTHETIC-claude",
-      "timestamp": "2026-10-01T09:00:22Z",
+      "timestamp": "2026-10-01T09:00:22+00:00",
       "kind": "task",
       "status": "success"
     }

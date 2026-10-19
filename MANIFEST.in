@@ -4,5 +4,5 @@ recursive-include examples *.json *.jsonl *.csv *.html *.md
 recursive-include docs *.md *.txt *.json
 recursive-include scripts *.py
 recursive-include .github *.yml
-include .gitignore
+include .gitignore .gitattributes
 

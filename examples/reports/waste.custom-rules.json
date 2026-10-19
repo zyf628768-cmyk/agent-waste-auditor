@@ -1,0 +1,775 @@
+{
+  "schema_version": "1.0",
+  "report_type": "audit",
+  "synthetic": true,
+  "analysis_settings": {
+    "schema_version": "1.0",
+    "repetition_threshold": 4,
+    "window_seconds": 1800,
+    "context_tokens": 20000,
+    "high_cost_thresholds": {
+      "USD": "1"
+    }
+  },
+  "totals": {
+    "USD": {
+      "actual": "2.42",
+      "estimated": "0.1254",
+      "manual": "27.50"
+    }
+  },
+  "tasks": [
+    {
+      "task_id": "SYNTHETIC-waste",
+      "agent": "codex",
+      "task_key": "SYNTHETIC-fix-parser",
+      "difficulty": "easy",
+      "acceptance_id": "SYNTHETIC-parser-tests-v1",
+      "model": "SYNTHETIC-model",
+      "prompt_strategy": null,
+      "workflow": null,
+      "status": "failed",
+      "accepted": false,
+      "synthetic": true,
+      "human_minutes": "15",
+      "rework_minutes": "30",
+      "totals": {
+        "USD": {
+          "actual": "2.42",
+          "estimated": "0.1254",
+          "manual": "27.50"
+        }
+      },
+      "category_totals": {
+        "human": {
+          "USD": {
+            "actual": "0",
+            "estimated": "0",
+            "manual": "9"
+          }
+        },
+        "model": {
+          "USD": {
+            "actual": "0",
+            "estimated": "0.1254",
+            "manual": "0"
+          }
+        },
+        "quality": {
+          "USD": {
+            "actual": "0",
+            "estimated": "0",
+            "manual": "0.50"
+          }
+        },
+        "rework": {
+          "USD": {
+            "actual": "0.12",
+            "estimated": "0",
+            "manual": "18"
+          }
+        },
+        "tool": {
+          "USD": {
+            "actual": "2.30",
+            "estimated": "0",
+            "manual": "0"
+          }
+        }
+      },
+      "failed_step_costs": {
+        "USD": {
+          "actual": "0.15",
+          "estimated": "0",
+          "manual": "0"
+        }
+      },
+      "unknown_costs": [],
+      "cost_coverage": {
+        "known_events": 21,
+        "cost_bearing_events": 21,
+        "complete": true,
+        "human_effort_known": true,
+        "monetary_basis": [
+          "actual",
+          "estimated",
+          "manual"
+        ],
+        "unknown_reasons": []
+      },
+      "elapsed_seconds": "35",
+      "duration_sum_ms": 60000,
+      "queue_ms": 10000,
+      "human_wait_ms": 20000,
+      "rework_events": 3,
+      "roi": {
+        "status": "unavailable",
+        "reason": "task not successfully accepted"
+      }
+    }
+  ],
+  "charges": [
+    {
+      "amount": "0.05",
+      "origin": "actual",
+      "currency": "USD",
+      "event_id": "SYNTHETIC-fail-0",
+      "task_id": "SYNTHETIC-waste",
+      "category": "tool",
+      "failed": true,
+      "source": "event"
+    },
+    {
+      "amount": "0.05",
+      "origin": "actual",
+      "currency": "USD",
+      "event_id": "SYNTHETIC-fail-1",
+      "task_id": "SYNTHETIC-waste",
+      "category": "tool",
+      "failed": true,
+      "source": "event"
+    },
+    {
+      "amount": "0.05",
+      "origin": "actual",
+      "currency": "USD",
+      "event_id": "SYNTHETIC-fail-2",
+      "task_id": "SYNTHETIC-waste",
+      "category": "tool",
+      "failed": true,
+      "source": "event"
+    },
+    {
+      "amount": "0.02",
+      "origin": "actual",
+      "currency": "USD",
+      "event_id": "SYNTHETIC-loop-0",
+      "task_id": "SYNTHETIC-waste",
+      "category": "tool",
+      "failed": false,
+      "source": "event"
+    },
+    {
+      "amount": "0.02",
+      "origin": "actual",
+      "currency": "USD",
+      "event_id": "SYNTHETIC-loop-1",
+      "task_id": "SYNTHETIC-waste",
+      "category": "tool",
+      "failed": false,
+      "source": "event"
+    },
+    {
+      "amount": "0.02",
+      "origin": "actual",
+      "currency": "USD",
+      "event_id": "SYNTHETIC-loop-2",
+      "task_id": "SYNTHETIC-waste",
+      "category": "tool",
+      "failed": false,
+      "source": "event"
+    },
+    {
+      "amount": "0.02",
+      "origin": "actual",
+      "currency": "USD",
+      "event_id": "SYNTHETIC-loop-3",
+      "task_id": "SYNTHETIC-waste",
+      "category": "tool",
+      "failed": false,
+      "source": "event"
+    },
+    {
+      "amount": "0.02",
+      "origin": "actual",
+      "currency": "USD",
+      "event_id": "SYNTHETIC-loop-4",
+      "task_id": "SYNTHETIC-waste",
+      "category": "tool",
+      "failed": false,
+      "source": "event"
+    },
+    {
+      "amount": "0.02",
+      "origin": "actual",
+      "currency": "USD",
+      "event_id": "SYNTHETIC-loop-5",
+      "task_id": "SYNTHETIC-waste",
+      "category": "tool",
+      "failed": false,
+      "source": "event"
+    },
+    {
+      "amount": "0.04",
+      "origin": "actual",
+      "currency": "USD",
+      "event_id": "SYNTHETIC-edit_file-0",
+      "task_id": "SYNTHETIC-waste",
+      "category": "rework",
+      "failed": false,
+      "source": "event"
+    },
+    {
+      "amount": "0.04",
+      "origin": "actual",
+      "currency": "USD",
+      "event_id": "SYNTHETIC-edit_file-1",
+      "task_id": "SYNTHETIC-waste",
+      "category": "rework",
+      "failed": false,
+      "source": "event"
+    },
+    {
+      "amount": "0.04",
+      "origin": "actual",
+      "currency": "USD",
+      "event_id": "SYNTHETIC-edit_file-2",
+      "task_id": "SYNTHETIC-waste",
+      "category": "rework",
+      "failed": false,
+      "source": "event"
+    },
+    {
+      "amount": "0.01",
+      "origin": "actual",
+      "currency": "USD",
+      "event_id": "SYNTHETIC-read_file-0",
+      "task_id": "SYNTHETIC-waste",
+      "category": "tool",
+      "failed": false,
+      "source": "event"
+    },
+    {
+      "amount": "0.01",
+      "origin": "actual",
+      "currency": "USD",
+      "event_id": "SYNTHETIC-read_file-1",
+      "task_id": "SYNTHETIC-waste",
+      "category": "tool",
+      "failed": false,
+      "source": "event"
+    },
+    {
+      "amount": "0.01",
+      "origin": "actual",
+      "currency": "USD",
+      "event_id": "SYNTHETIC-read_file-2",
+      "task_id": "SYNTHETIC-waste",
+      "category": "tool",
+      "failed": false,
+      "source": "event"
+    },
+    {
+      "amount": "0.0408",
+      "currency": "USD",
+      "origin": "estimated",
+      "price_id": "SYNTHETIC-2026-v1",
+      "event_id": "SYNTHETIC-context-0",
+      "task_id": "SYNTHETIC-waste",
+      "category": "model",
+      "failed": false,
+      "source": "event"
+    },
+    {
+      "amount": "0.0408",
+      "currency": "USD",
+      "origin": "estimated",
+      "price_id": "SYNTHETIC-2026-v1",
+      "event_id": "SYNTHETIC-context-1",
+      "task_id": "SYNTHETIC-waste",
+      "category": "model",
+      "failed": false,
+      "source": "event"
+    },
+    {
+      "amount": "0.0408",
+      "currency": "USD",
+      "origin": "estimated",
+      "price_id": "SYNTHETIC-2026-v1",
+      "event_id": "SYNTHETIC-context-2",
+      "task_id": "SYNTHETIC-waste",
+      "category": "model",
+      "failed": false,
+      "source": "event"
+    },
+    {
+      "amount": "2",
+      "origin": "actual",
+      "currency": "USD",
+      "event_id": "SYNTHETIC-no-result",
+      "task_id": "SYNTHETIC-waste",
+      "category": "tool",
+      "failed": false,
+      "source": "event"
+    },
+    {
+      "amount": "0.50",
+      "origin": "manual",
+      "currency": "USD",
+      "event_id": "SYNTHETIC-quality",
+      "task_id": "SYNTHETIC-waste",
+      "category": "quality",
+      "failed": false,
+      "source": "event"
+    },
+    {
+      "amount": "0.003",
+      "currency": "USD",
+      "origin": "estimated",
+      "price_id": "SYNTHETIC-2026-v1",
+      "event_id": "SYNTHETIC-after-failure",
+      "task_id": "SYNTHETIC-waste",
+      "category": "model",
+      "failed": false,
+      "source": "event"
+    },
+    {
+      "event_id": "task-human-human_minutes",
+      "task_id": "SYNTHETIC-waste",
+      "category": "human",
+      "source": "task_metadata",
+      "origin": "manual",
+      "currency": "USD",
+      "amount": "9"
+    },
+    {
+      "event_id": "task-human-rework_minutes",
+      "task_id": "SYNTHETIC-waste",
+      "category": "rework",
+      "source": "task_metadata",
+      "origin": "manual",
+      "currency": "USD",
+      "amount": "18"
+    }
+  ],
+  "findings": [
+    {
+      "rule": "cost_without_progress",
+      "severity": "review",
+      "conclusion": "suspected_inefficiency",
+      "task_id": "SYNTHETIC-waste",
+      "explanation": "Charge exceeds the configured original-currency threshold with explicitly absent progress.",
+      "recommendation": "Review whether the cost produced a reusable result before repeating.",
+      "evidence": [
+        {
+          "event_id": "SYNTHETIC-no-result",
+          "source_line": 19,
+          "status": "success",
+          "signature": null
+        }
+      ]
+    },
+    {
+      "rule": "cost_after_failure",
+      "severity": "review",
+      "conclusion": "suspected_inefficiency",
+      "task_id": "SYNTHETIC-waste",
+      "explanation": "A charged step or unpriced model call follows an explicit failed-task marker.",
+      "recommendation": "Confirm whether the task was deliberately reopened.",
+      "evidence": [
+        {
+          "event_id": "SYNTHETIC-failed-task",
+          "source_line": 22,
+          "status": "failed",
+          "signature": null
+        },
+        {
+          "event_id": "SYNTHETIC-after-failure",
+          "source_line": 23,
+          "status": "success",
+          "signature": null
+        }
+      ]
+    }
+  ],
+  "coverage": {
+    "events": 23,
+    "tasks": 1,
+    "unknown_cost_items": 0,
+    "warnings": [],
+    "scope": "specified files only; unobserved costs cannot be inferred"
+  },
+  "timeline": [
+    {
+      "id": "SYNTHETIC-fail-0",
+      "task_id": "SYNTHETIC-waste",
+      "timestamp": "2026-10-01T09:00:00+00:00",
+      "kind": "tool",
+      "status": "failed"
+    },
+    {
+      "id": "SYNTHETIC-fail-1",
+      "task_id": "SYNTHETIC-waste",
+      "timestamp": "2026-10-01T09:00:01+00:00",
+      "kind": "tool",
+      "status": "failed"
+    },
+    {
+      "id": "SYNTHETIC-fail-2",
+      "task_id": "SYNTHETIC-waste",
+      "timestamp": "2026-10-01T09:00:02+00:00",
+      "kind": "tool",
+      "status": "failed"
+    },
+    {
+      "id": "SYNTHETIC-loop-0",
+      "task_id": "SYNTHETIC-waste",
+      "timestamp": "2026-10-01T09:00:05+00:00",
+      "kind": "tool",
+      "status": "success"
+    },
+    {
+      "id": "SYNTHETIC-loop-1",
+      "task_id": "SYNTHETIC-waste",
+      "timestamp": "2026-10-01T09:00:06+00:00",
+      "kind": "tool",
+      "status": "success"
+    },
+    {
+      "id": "SYNTHETIC-loop-2",
+      "task_id": "SYNTHETIC-waste",
+      "timestamp": "2026-10-01T09:00:07+00:00",
+      "kind": "tool",
+      "status": "success"
+    },
+    {
+      "id": "SYNTHETIC-loop-3",
+      "task_id": "SYNTHETIC-waste",
+      "timestamp": "2026-10-01T09:00:08+00:00",
+      "kind": "tool",
+      "status": "success"
+    },
+    {
+      "id": "SYNTHETIC-loop-4",
+      "task_id": "SYNTHETIC-waste",
+      "timestamp": "2026-10-01T09:00:09+00:00",
+      "kind": "tool",
+      "status": "success"
+    },
+    {
+      "id": "SYNTHETIC-loop-5",
+      "task_id": "SYNTHETIC-waste",
+      "timestamp": "2026-10-01T09:00:10+00:00",
+      "kind": "tool",
+      "status": "success"
+    },
+    {
+      "id": "SYNTHETIC-edit_file-0",
+      "task_id": "SYNTHETIC-waste",
+      "timestamp": "2026-10-01T09:00:12+00:00",
+      "kind": "tool",
+      "status": "success"
+    },
+    {
+      "id": "SYNTHETIC-edit_file-1",
+      "task_id": "SYNTHETIC-waste",
+      "timestamp": "2026-10-01T09:00:13+00:00",
+      "kind": "tool",
+      "status": "success"
+    },
+    {
+      "id": "SYNTHETIC-edit_file-2",
+      "task_id": "SYNTHETIC-waste",
+      "timestamp": "2026-10-01T09:00:14+00:00",
+      "kind": "tool",
+      "status": "success"
+    },
+    {
+      "id": "SYNTHETIC-read_file-0",
+      "task_id": "SYNTHETIC-waste",
+      "timestamp": "2026-10-01T09:00:16+00:00",
+      "kind": "tool",
+      "status": "success"
+    },
+    {
+      "id": "SYNTHETIC-read_file-1",
+      "task_id": "SYNTHETIC-waste",
+      "timestamp": "2026-10-01T09:00:17+00:00",
+      "kind": "tool",
+      "status": "success"
+    },
+    {
+      "id": "SYNTHETIC-read_file-2",
+      "task_id": "SYNTHETIC-waste",
+      "timestamp": "2026-10-01T09:00:18+00:00",
+      "kind": "tool",
+      "status": "success"
+    },
+    {
+      "id": "SYNTHETIC-context-0",
+      "task_id": "SYNTHETIC-waste",
+      "timestamp": "2026-10-01T09:00:20+00:00",
+      "kind": "model",
+      "status": "success"
+    },
+    {
+      "id": "SYNTHETIC-context-1",
+      "task_id": "SYNTHETIC-waste",
+      "timestamp": "2026-10-01T09:00:21+00:00",
+      "kind": "model",
+      "status": "success"
+    },
+    {
+      "id": "SYNTHETIC-context-2",
+      "task_id": "SYNTHETIC-waste",
+      "timestamp": "2026-10-01T09:00:22+00:00",
+      "kind": "model",
+      "status": "success"
+    },
+    {
+      "id": "SYNTHETIC-no-result",
+      "task_id": "SYNTHETIC-waste",
+      "timestamp": "2026-10-01T09:00:24+00:00",
+      "kind": "tool",
+      "status": "success"
+    },
+    {
+      "id": "SYNTHETIC-quality",
+      "task_id": "SYNTHETIC-waste",
+      "timestamp": "2026-10-01T09:00:25+00:00",
+      "kind": "tool",
+      "status": "success"
+    },
+    {
+      "id": "SYNTHETIC-wait",
+      "task_id": "SYNTHETIC-waste",
+      "timestamp": "2026-10-01T09:00:26+00:00",
+      "kind": "wait",
+      "status": "success"
+    },
+    {
+      "id": "SYNTHETIC-failed-task",
+      "task_id": "SYNTHETIC-waste",
+      "timestamp": "2026-10-01T09:00:30+00:00",
+      "kind": "task",
+      "status": "failed"
+    },
+    {
+      "id": "SYNTHETIC-after-failure",
+      "task_id": "SYNTHETIC-waste",
+      "timestamp": "2026-10-01T09:00:35+00:00",
+      "kind": "model",
+      "status": "success"
+    }
+  ],
+  "trend": [
+    {
+      "date_utc": "2026-10-01",
+      "totals": {
+        "USD": {
+          "actual": "2.42",
+          "estimated": "0.1254",
+          "manual": "0.50"
+        }
+      }
+    }
+  ],
+  "high_cost_steps": [
+    {
+      "amount": "2",
+      "origin": "actual",
+      "currency": "USD",
+      "event_id": "SYNTHETIC-no-result",
+      "task_id": "SYNTHETIC-waste",
+      "category": "tool",
+      "failed": false,
+      "source": "event"
+    },
+    {
+      "amount": "0.50",
+      "origin": "manual",
+      "currency": "USD",
+      "event_id": "SYNTHETIC-quality",
+      "task_id": "SYNTHETIC-waste",
+      "category": "quality",
+      "failed": false,
+      "source": "event"
+    },
+    {
+      "amount": "0.05",
+      "origin": "actual",
+      "currency": "USD",
+      "event_id": "SYNTHETIC-fail-0",
+      "task_id": "SYNTHETIC-waste",
+      "category": "tool",
+      "failed": true,
+      "source": "event"
+    },
+    {
+      "amount": "0.05",
+      "origin": "actual",
+      "currency": "USD",
+      "event_id": "SYNTHETIC-fail-1",
+      "task_id": "SYNTHETIC-waste",
+      "category": "tool",
+      "failed": true,
+      "source": "event"
+    },
+    {
+      "amount": "0.05",
+      "origin": "actual",
+      "currency": "USD",
+      "event_id": "SYNTHETIC-fail-2",
+      "task_id": "SYNTHETIC-waste",
+      "category": "tool",
+      "failed": true,
+      "source": "event"
+    },
+    {
+      "amount": "0.0408",
+      "currency": "USD",
+      "origin": "estimated",
+      "price_id": "SYNTHETIC-2026-v1",
+      "event_id": "SYNTHETIC-context-0",
+      "task_id": "SYNTHETIC-waste",
+      "category": "model",
+      "failed": false,
+      "source": "event"
+    },
+    {
+      "amount": "0.0408",
+      "currency": "USD",
+      "origin": "estimated",
+      "price_id": "SYNTHETIC-2026-v1",
+      "event_id": "SYNTHETIC-context-1",
+      "task_id": "SYNTHETIC-waste",
+      "category": "model",
+      "failed": false,
+      "source": "event"
+    },
+    {
+      "amount": "0.0408",
+      "currency": "USD",
+      "origin": "estimated",
+      "price_id": "SYNTHETIC-2026-v1",
+      "event_id": "SYNTHETIC-context-2",
+      "task_id": "SYNTHETIC-waste",
+      "category": "model",
+      "failed": false,
+      "source": "event"
+    },
+    {
+      "amount": "0.04",
+      "origin": "actual",
+      "currency": "USD",
+      "event_id": "SYNTHETIC-edit_file-0",
+      "task_id": "SYNTHETIC-waste",
+      "category": "rework",
+      "failed": false,
+      "source": "event"
+    },
+    {
+      "amount": "0.04",
+      "origin": "actual",
+      "currency": "USD",
+      "event_id": "SYNTHETIC-edit_file-1",
+      "task_id": "SYNTHETIC-waste",
+      "category": "rework",
+      "failed": false,
+      "source": "event"
+    },
+    {
+      "amount": "0.04",
+      "origin": "actual",
+      "currency": "USD",
+      "event_id": "SYNTHETIC-edit_file-2",
+      "task_id": "SYNTHETIC-waste",
+      "category": "rework",
+      "failed": false,
+      "source": "event"
+    },
+    {
+      "amount": "0.02",
+      "origin": "actual",
+      "currency": "USD",
+      "event_id": "SYNTHETIC-loop-0",
+      "task_id": "SYNTHETIC-waste",
+      "category": "tool",
+      "failed": false,
+      "source": "event"
+    },
+    {
+      "amount": "0.02",
+      "origin": "actual",
+      "currency": "USD",
+      "event_id": "SYNTHETIC-loop-1",
+      "task_id": "SYNTHETIC-waste",
+      "category": "tool",
+      "failed": false,
+      "source": "event"
+    },
+    {
+      "amount": "0.02",
+      "origin": "actual",
+      "currency": "USD",
+      "event_id": "SYNTHETIC-loop-2",
+      "task_id": "SYNTHETIC-waste",
+      "category": "tool",
+      "failed": false,
+      "source": "event"
+    },
+    {
+      "amount": "0.02",
+      "origin": "actual",
+      "currency": "USD",
+      "event_id": "SYNTHETIC-loop-3",
+      "task_id": "SYNTHETIC-waste",
+      "category": "tool",
+      "failed": false,
+      "source": "event"
+    },
+    {
+      "amount": "0.02",
+      "origin": "actual",
+      "currency": "USD",
+      "event_id": "SYNTHETIC-loop-4",
+      "task_id": "SYNTHETIC-waste",
+      "category": "tool",
+      "failed": false,
+      "source": "event"
+    },
+    {
+      "amount": "0.02",
+      "origin": "actual",
+      "currency": "USD",
+      "event_id": "SYNTHETIC-loop-5",
+      "task_id": "SYNTHETIC-waste",
+      "category": "tool",
+      "failed": false,
+      "source": "event"
+    },
+    {
+      "amount": "0.01",
+      "origin": "actual",
+      "currency": "USD",
+      "event_id": "SYNTHETIC-read_file-0",
+      "task_id": "SYNTHETIC-waste",
+      "category": "tool",
+      "failed": false,
+      "source": "event"
+    },
+    {
+      "amount": "0.01",
+      "origin": "actual",
+      "currency": "USD",
+      "event_id": "SYNTHETIC-read_file-1",
+      "task_id": "SYNTHETIC-waste",
+      "category": "tool",
+      "failed": false,
+      "source": "event"
+    },
+    {
+      "amount": "0.01",
+      "origin": "actual",
+      "currency": "USD",
+      "event_id": "SYNTHETIC-read_file-2",
+      "task_id": "SYNTHETIC-waste",
+      "category": "tool",
+      "failed": false,
+      "source": "event"
+    }
+  ],
+  "successful_tasks": 0,
+  "average_cost_per_success": null,
+  "average_cost_definition": "all observed task costs including failures / accepted successes; partial scope; currencies kept separate"
+}

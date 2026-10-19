@@ -11,21 +11,22 @@ OUT = ROOT.parent
 
 
 def main():
+    git = ["git", "-c", "safe.directory=" + ROOT.as_posix()]
+    state = subprocess.run([*git, "status", "--porcelain"], cwd=ROOT, check=True, capture_output=True)
+    if state.stdout.strip():
+        raise RuntimeError("commit/review source and validation evidence before packaging; working tree must be clean")
     # Git-tracked membership prevents accidental inclusion of unrelated private files.
-    p = subprocess.run(["git", "-c", "safe.directory=" + ROOT.as_posix(), "ls-files", "-z"], cwd=ROOT, check=True, capture_output=True)
+    p = subprocess.run([*git, "ls-files", "-z"], cwd=ROOT, check=True, capture_output=True)
     names = sorted(n for n in p.stdout.decode("utf-8").split("\0") if n)
     if not names:
         raise RuntimeError("commit public source files before packaging")
     target = OUT / "agent-waste-auditor-v0.1.0.zip"
-    with zipfile.ZipFile(target, "w", zipfile.ZIP_DEFLATED) as z:
-        for name in names:
-            source = ROOT / name
-            if not source.resolve().is_relative_to(ROOT.resolve()) or not source.is_file():
-                raise RuntimeError("unsafe source member")
-            info = zipfile.ZipInfo("agent-waste-auditor/" + name, date_time=(2026, 10, 19, 0, 0, 0))
-            info.compress_type = zipfile.ZIP_DEFLATED
-            info.external_attr = 0o100644 << 16
-            z.writestr(info, source.read_bytes())
+    for name in names:
+        source = ROOT / name
+        if not source.resolve().is_relative_to(ROOT.resolve()) or not source.is_file() or source.is_symlink():
+            raise RuntimeError("unsafe source member")
+    # Archive committed blobs instead of worktree line endings or generated extras.
+    subprocess.run([*git, "archive", "--format=zip", "--prefix=agent-waste-auditor/", "--output=" + str(target), "HEAD"], cwd=ROOT, check=True)
     with zipfile.ZipFile(target) as z:
         if z.testzip() is not None:
             raise RuntimeError("ZIP CRC failed")

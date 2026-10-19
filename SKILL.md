@@ -20,4 +20,6 @@ Work only on user-named files. Do not search home directories, read environment 
 
 Report monetary buckets separately. Failed-step costs overlap main charges; do not add them again. Human minutes exclude rework, and waiting is not wages. If task-level human costs overlap human charge events, reconcile before ROI. Distinguish `unavailable`, `scenario_estimate` and user-verified basis; never imply an independent billing audit. Each suspected inefficiency needs event/line evidence and context; justified retries, deliberate repetition and verified progress can be reasonable.
 
+Use `--rules` only with explicit, documented thresholds; do not equate currencies. Review the embedded analysis settings and coverage signature. Compare per-attempt/per-success costs alongside totals and outcome denominators when attempt counts differ. Read errors by their safe code/source line; do not print malformed source bodies for troubleshooting. Source labels longer than 160 characters or normalization collisions should be corrected in an explicitly scoped copy, not silently truncated or merged.
+
 Use `python scripts/demo.py` only for clearly marked SYNTHETIC demonstrations. Review the generated artifacts for sensitive labels before sharing. Do not claim unexecuted CI jobs passed.

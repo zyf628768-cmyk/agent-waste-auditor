@@ -9,6 +9,17 @@
       "difficulty": "easy",
       "acceptance_id": "SYNTHETIC-parser-tests-v1",
       "cost_coverage_complete": true,
+      "coverage_signature": {
+        "human_effort_known": true,
+        "monetary_basis": [
+          "actual",
+          "estimated"
+        ],
+        "unknown_reasons": [],
+        "currencies": [
+          "USD"
+        ]
+      },
       "comparable": true,
       "agents": [
         {
@@ -16,6 +27,8 @@
           "dimension": "agent",
           "attempts": 1,
           "known_outcomes": 1,
+          "successes": 1,
+          "unknown_outcomes": 0,
           "success_rate": "1",
           "totals": {
             "USD": {
@@ -24,9 +37,24 @@
               "manual": "12"
             }
           },
+          "cost_per_attempt": {
+            "USD": {
+              "actual": "0.04",
+              "estimated": "0.61",
+              "manual": "12"
+            }
+          },
+          "cost_per_success": {
+            "USD": {
+              "actual": "0.04",
+              "estimated": "0.61",
+              "manual": "12"
+            }
+          },
           "human_minutes": "20",
+          "elapsed_median_seconds": "22",
           "elapsed_seconds": [
-            "22.0"
+            "22"
           ],
           "rework_events": 0
         },
@@ -35,6 +63,8 @@
           "dimension": "agent",
           "attempts": 1,
           "known_outcomes": 1,
+          "successes": 1,
+          "unknown_outcomes": 0,
           "success_rate": "1",
           "totals": {
             "USD": {
@@ -43,9 +73,24 @@
               "manual": "6"
             }
           },
+          "cost_per_attempt": {
+            "USD": {
+              "actual": "0.02",
+              "estimated": "0.3",
+              "manual": "6"
+            }
+          },
+          "cost_per_success": {
+            "USD": {
+              "actual": "0.02",
+              "estimated": "0.3",
+              "manual": "6"
+            }
+          },
           "human_minutes": "10",
+          "elapsed_median_seconds": "12",
           "elapsed_seconds": [
-            "12.0"
+            "12"
           ],
           "rework_events": 0
         }
@@ -53,5 +98,5 @@
     }
   ],
   "excluded": [],
-  "caution": "No global ranking; groups separate task identity, difficulty, acceptance and observed cost coverage. Small samples are descriptive."
+  "caution": "No global ranking; groups separate identity, difficulty, acceptance, cost completeness, monetary basis, human effort coverage, unknown reasons and currencies. Per-attempt/per-success costs avoid misleading unequal totals. Small samples are descriptive."
 }

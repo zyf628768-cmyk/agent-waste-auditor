@@ -1,7 +1,8 @@
 from decimal import Decimal
-from .models import money
+from .models import money, financial
 
 
+@financial
 def human_costs(task):
     """Human minutes exclude rework minutes. Waiting is never wage-converted."""
     if "hourly_rate" not in task:
@@ -16,7 +17,8 @@ def human_costs(task):
     return result
 
 
-def calculate(task, totals, unknown_count, human_events=False):
+@financial
+def calculate(task, totals, unknown_count, human_events=False, estimated_used=False):
     required = ("baseline_minutes", "human_minutes", "rework_minutes", "hourly_rate", "currency")
     if not all(k in task for k in required):
         return {"status": "unavailable", "reason": "reliable baseline, hourly rate and complete human effort required"}
@@ -29,7 +31,7 @@ def calculate(task, totals, unknown_count, human_events=False):
     baseline = money(task["baseline_minutes"]) * money(task["hourly_rate"]) / 60
     actual = sum((money(x) for x in totals.get(task["currency"], {}).values()), Decimal(0))
     saved = baseline - actual
-    estimated = money(totals.get(task["currency"], {}).get("estimated", "0")) > 0
+    estimated = estimated_used or money(totals.get(task["currency"], {}).get("estimated", "0")) > 0
     return {"status": "verified_basis" if task.get("baseline_verified") is True and not estimated else "scenario_estimate",
             "currency": task["currency"], "baseline_cost": str(baseline), "total_cost": str(actual),
             "net_savings": str(saved), "roi": str(saved / actual) if actual else None,

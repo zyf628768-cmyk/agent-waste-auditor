@@ -12,6 +12,7 @@ def convert(rows):
         raise ValueError("unsupported Codex major version")
     task = meta[0]["id"]
     model, totals, out, pending = None, {}, [], {}
+    gap, changed_model = False, False
     warnings = ["EXPERIMENTAL_CODEX_PROFILE", "NATIVE_TASK_OUTCOME_UNAVAILABLE"]
     if not version:
         warnings.append("VERSION_UNAVAILABLE")
@@ -21,23 +22,38 @@ def convert(rows):
         base = {"schema_version": "1.0", "id": f"codex-{line}", "task_id": task, "agent": "codex",
                 "timestamp": row.get("timestamp"), "source_line": line}
         if typ == "turn_context":
+            changed_model = changed_model or bool(totals and p.get("model") != model)
             model = p.get("model")
         elif typ == "event_msg" and p.get("type") == "token_count":
             current = (p.get("info") or {}).get("total_token_usage")
             if not current:
                 warnings.append("CUMULATIVE_USAGE_UNAVAILABLE")
+                out.append(event(dict(base, kind="model", model=model, usage_complete=False)))
+                gap = True
                 continue
             keys = {"input_tokens": "input_tokens", "output_tokens": "output_tokens",
                     "cached_input_tokens": "cached_tokens", "cache_write_input_tokens": "cache_write_tokens"}
-            if any(not isinstance(current.get(k, 0), int) or current.get(k, 0) < totals.get(k, 0) for k in keys):
+            if any(k in current and (isinstance(current[k], bool) or not isinstance(current[k], int) or current[k] < totals.get(k, 0)) for k in keys):
                 raise ValueError("invalid or reset Codex cumulative usage; split session")
             if totals == current:
                 continue
             e = dict(base, kind="model", model=model)
+            if not all(k in current for k in ("input_tokens", "output_tokens", "cached_input_tokens")) or gap:
+                e["usage_complete"] = False
+                warnings.append("USAGE_GAP")
             for src, dst in keys.items():
                 if src in current:
                     e[dst] = current[src] - totals.get(src, 0)
             totals = dict(current)
+            gap = not all(k in current for k in ("input_tokens", "output_tokens", "cached_input_tokens"))
+            if changed_model:
+                # A changed model between cumulative snapshots has no per-model ledger.
+                e.pop("model", None)
+                e["usage_complete"] = False
+                warnings.append("AMBIGUOUS_MODEL_USAGE")
+            changed_model = False
+            if e.get("usage_complete") is False and e.get("cached_tokens", 0) + e.get("cache_write_tokens", 0) > e.get("input_tokens", 0):
+                e.pop("input_tokens", None)
             if not any(e.get(k, 0) for k in keys.values()):
                 continue
             if "cached_tokens" not in e:

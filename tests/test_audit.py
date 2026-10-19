@@ -366,9 +366,7 @@ class ReportsAndCLI(unittest.TestCase):
 
     def test_comparison_dimensions(self):
         a = analyze(data(tasks=[task(prompt_strategy="short", workflow="single")]), prices())
-        b = analyze(data([sample(id="e2", task_id="t2", model="different")], [task(task_id="t2", prompt_strategy="long", workflow="parallel")]), prices())
-        # Supply equal coverage, then compare exact experimental labels.
-        b["tasks"][0]["cost_coverage"]["complete"] = True
+        b = analyze(data([sample(id="e2", task_id="t2", model="different")], [task(task_id="t2", prompt_strategy="long", workflow="parallel")]), prices(model="different"))
         for dimension in ("model", "prompt_strategy", "workflow"):
             c = compare([a, b], by=dimension)
             self.assertEqual(len(c["groups"][0]["agents"]), 2)

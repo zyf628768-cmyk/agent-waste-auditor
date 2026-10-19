@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=68"]
+requires = ["setuptools>=77.0.3"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -11,6 +11,19 @@ requires-python = ">=3.11"
 license = "MIT"
 authors = [{name = "AgentWaste contributors"}]
 dependencies = []
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+  "Operating System :: OS Independent",
+  "Topic :: Software Development :: Quality Assurance",
+]
+
+[project.urls]
+Repository = "https://github.com/zyf628768-cmyk/agent-waste-auditor"
+Issues = "https://github.com/zyf628768-cmyk/agent-waste-auditor/issues"
 
 [project.optional-dependencies]
 test = ["jsonschema>=4.20,<5"]

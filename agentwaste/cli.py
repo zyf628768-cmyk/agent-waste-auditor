@@ -10,6 +10,9 @@ from .costs import analyze
 from .compare import compare
 from .reports import write
 from .doctor import check
+from .safeio import InputError
+from .schemas import validate_report
+from .rules import Rules
 
 
 def parser():
@@ -24,10 +27,12 @@ def parser():
     a = sub.add_parser("analyze", help="Analyze canonical dataset with optional dated prices")
     a.add_argument("input", type=Path)
     a.add_argument("--pricing", type=Path)
+    a.add_argument("--rules", type=Path, help="Versioned heuristic thresholds; no remote configuration")
     a.add_argument("-o", "--output", required=True, type=Path)
     c = sub.add_parser("compare", help="Compare canonical datasets in matching acceptance groups")
     c.add_argument("inputs", nargs="+", type=Path)
     c.add_argument("--pricing", type=Path)
+    c.add_argument("--rules", type=Path)
     c.add_argument("--by", choices=["agent", "model", "prompt_strategy", "workflow"], default="agent")
     c.add_argument("-o", "--output", required=True, type=Path)
     r = sub.add_parser("report", help="Render audit/comparison JSON as offline reports")
@@ -47,7 +52,7 @@ def main(argv=None):
     args = parser().parse_args(argv)
     try:
         # Output must never overwrite any explicitly supplied input.
-        sources = [getattr(args, k, None) for k in ("input", "tasks", "pricing")]
+        sources = [getattr(args, k, None) for k in ("input", "tasks", "pricing", "rules")]
         sources.extend(getattr(args, "inputs", []))
         if getattr(args, "output", None) and any(isinstance(s, Path) and s.resolve() == args.output.resolve() for s in sources):
             raise ValueError("output must differ from source files")
@@ -59,15 +64,15 @@ def main(argv=None):
                 result["tasks"] = tasks_validate(load(args.tasks))
         elif args.command in {"analyze", "compare"}:
             book = PriceBook(load(args.pricing) if args.pricing else None)
+            rules = Rules.from_dict(load(args.rules) if args.rules else None)
             if args.command == "analyze":
-                result = analyze(dataset(args.input), book)
+                result = analyze(dataset(args.input), book, rules)
             else:
-                result = compare([analyze(dataset(path), book) for path in args.inputs], args.by)
+                result = compare([analyze(dataset(path), book, rules) for path in args.inputs], args.by)
         elif args.command == "report":
             # Reports should be our structured output, not a raw arbitrary JSON object.
             result = load(args.input)
-            if result.get("schema_version") != "1.0" or result.get("report_type") not in {"audit", "comparison"}:
-                raise ValueError("expected AgentWaste audit/comparison JSON")
+            validate_report(result)
             write(result, args.output, args.format)
             print("Report written")
             return 0
@@ -75,8 +80,7 @@ def main(argv=None):
             result = {"schema_version": "1.0", "prices": PriceBook(load(args.input) if args.input else None).prices,
                       "notice": "No bundled commercial model prices; explicit provenance and date windows required."}
             # Price source fields are configuration text; keep secrets out of console.
-            from .models import redact
-            print(redact(json.dumps(result, indent=2)))
+            print(json.dumps(result, indent=2))
             return 0
         else:
             result = check(args.input, args.format, args.pricing)
@@ -85,7 +89,11 @@ def main(argv=None):
         write(result, args.output)
         print("Written " + args.command + " result")
         return 0
-    except (ValueError, OSError, KeyError, TypeError, OverflowError, AttributeError):
+    except InputError as exc:
+        suffix = f" at source line {exc.line}" if exc.line else ""
+        print(f"agentwaste: {exc.code}{suffix}", file=sys.stderr)
+        return 2
+    except (ValueError, OSError, KeyError, TypeError, ArithmeticError, AttributeError, RecursionError):
         # No exception repr: malformed inputs and file names may contain credentials.
         print("agentwaste: invalid/incompatible input or inaccessible output; check documented schema and doctor", file=sys.stderr)
         return 2

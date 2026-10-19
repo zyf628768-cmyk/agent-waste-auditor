@@ -2,14 +2,6 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://agentwaste.invalid/schemas/event.schema.json",
   "type": "object",
-  "required": [
-    "schema_version",
-    "id",
-    "task_id",
-    "agent",
-    "timestamp",
-    "kind"
-  ],
   "additionalProperties": false,
   "properties": {
     "schema_version": {
@@ -17,23 +9,28 @@
     },
     "id": {
       "type": "string",
-      "minLength": 1
+      "minLength": 1,
+      "maxLength": 160
     },
     "task_id": {
       "type": "string",
-      "minLength": 1
+      "minLength": 1,
+      "maxLength": 160
     },
     "agent": {
       "type": "string",
-      "minLength": 1
+      "minLength": 1,
+      "maxLength": 160
     },
     "model": {
       "type": "string",
-      "minLength": 1
+      "minLength": 1,
+      "maxLength": 160
     },
     "action": {
       "type": "string",
-      "minLength": 1
+      "minLength": 1,
+      "maxLength": 160
     },
     "timestamp": {
       "type": "string",
@@ -61,6 +58,7 @@
       "enum": [
         "model",
         "tool",
+        "human",
         "failure",
         "rework",
         "wait",
@@ -76,7 +74,8 @@
     },
     "amount": {
       "type": "string",
-      "pattern": "^\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?$"
+      "pattern": "^\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?$",
+      "format": "money"
     },
     "currency": {
       "type": "string",
@@ -128,6 +127,9 @@
     "progress": {
       "type": "boolean"
     },
+    "usage_complete": {
+      "type": "boolean"
+    },
     "signature": {
       "type": "string",
       "pattern": "^[a-f0-9]{64}$"
@@ -137,6 +139,14 @@
       "pattern": "^[a-f0-9]{64}$"
     }
   },
+  "required": [
+    "schema_version",
+    "id",
+    "task_id",
+    "agent",
+    "timestamp",
+    "kind"
+  ],
   "dependentRequired": {
     "amount": [
       "currency",

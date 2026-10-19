@@ -2,6 +2,15 @@
   "schema_version": "1.0",
   "report_type": "audit",
   "synthetic": true,
+  "analysis_settings": {
+    "schema_version": "1.0",
+    "repetition_threshold": 3,
+    "window_seconds": 3600,
+    "context_tokens": 10000,
+    "high_cost_thresholds": {
+      "USD": "1"
+    }
+  },
   "totals": {
     "USD": {
       "actual": "2.42",
@@ -79,9 +88,16 @@
       "cost_coverage": {
         "known_events": 21,
         "cost_bearing_events": 21,
-        "complete": true
+        "complete": true,
+        "human_effort_known": true,
+        "monetary_basis": [
+          "actual",
+          "estimated",
+          "manual"
+        ],
+        "unknown_reasons": []
       },
-      "elapsed_seconds": "35.0",
+      "elapsed_seconds": "35",
       "duration_sum_ms": 60000,
       "queue_ms": 10000,
       "human_wait_ms": 20000,
@@ -332,7 +348,7 @@
       "severity": "review",
       "conclusion": "suspected_inefficiency",
       "task_id": "SYNTHETIC-waste",
-      "explanation": "At least three identical failed calls without declared retry justification.",
+      "explanation": "Repeated identical failed calls meet the configured threshold without declared retry justification.",
       "recommendation": "Check the root error before another attempt.",
       "evidence": [
         {
@@ -472,7 +488,7 @@
       "severity": "review",
       "conclusion": "suspected_inefficiency",
       "task_id": "SYNTHETIC-waste",
-      "explanation": "Reported charge >= 1 original currency unit with explicitly absent progress; threshold is heuristic.",
+      "explanation": "Charge exceeds the configured original-currency threshold with explicitly absent progress.",
       "recommendation": "Review whether the cost produced a reusable result before repeating.",
       "evidence": [
         {
@@ -488,7 +504,7 @@
       "severity": "review",
       "conclusion": "suspected_inefficiency",
       "task_id": "SYNTHETIC-waste",
-      "explanation": "A/B sequence repeated three times without declared progress.",
+      "explanation": "A/B sequence meets the configured repetition threshold without declared progress.",
       "recommendation": "Stop and inspect the loop termination condition.",
       "evidence": [
         {
@@ -534,7 +550,7 @@
       "severity": "review",
       "conclusion": "suspected_inefficiency",
       "task_id": "SYNTHETIC-waste",
-      "explanation": "Cost-bearing event after an explicit failed-task marker.",
+      "explanation": "A charged step or unpriced model call follows an explicit failed-task marker.",
       "recommendation": "Confirm whether the task was deliberately reopened.",
       "evidence": [
         {
@@ -591,161 +607,161 @@
     {
       "id": "SYNTHETIC-fail-0",
       "task_id": "SYNTHETIC-waste",
-      "timestamp": "2026-10-01T09:00:00Z",
+      "timestamp": "2026-10-01T09:00:00+00:00",
       "kind": "tool",
       "status": "failed"
     },
     {
       "id": "SYNTHETIC-fail-1",
       "task_id": "SYNTHETIC-waste",
-      "timestamp": "2026-10-01T09:00:01Z",
+      "timestamp": "2026-10-01T09:00:01+00:00",
       "kind": "tool",
       "status": "failed"
     },
     {
       "id": "SYNTHETIC-fail-2",
       "task_id": "SYNTHETIC-waste",
-      "timestamp": "2026-10-01T09:00:02Z",
+      "timestamp": "2026-10-01T09:00:02+00:00",
       "kind": "tool",
       "status": "failed"
     },
     {
       "id": "SYNTHETIC-loop-0",
       "task_id": "SYNTHETIC-waste",
-      "timestamp": "2026-10-01T09:00:05Z",
+      "timestamp": "2026-10-01T09:00:05+00:00",
       "kind": "tool",
       "status": "success"
     },
     {
       "id": "SYNTHETIC-loop-1",
       "task_id": "SYNTHETIC-waste",
-      "timestamp": "2026-10-01T09:00:06Z",
+      "timestamp": "2026-10-01T09:00:06+00:00",
       "kind": "tool",
       "status": "success"
     },
     {
       "id": "SYNTHETIC-loop-2",
       "task_id": "SYNTHETIC-waste",
-      "timestamp": "2026-10-01T09:00:07Z",
+      "timestamp": "2026-10-01T09:00:07+00:00",
       "kind": "tool",
       "status": "success"
     },
     {
       "id": "SYNTHETIC-loop-3",
       "task_id": "SYNTHETIC-waste",
-      "timestamp": "2026-10-01T09:00:08Z",
+      "timestamp": "2026-10-01T09:00:08+00:00",
       "kind": "tool",
       "status": "success"
     },
     {
       "id": "SYNTHETIC-loop-4",
       "task_id": "SYNTHETIC-waste",
-      "timestamp": "2026-10-01T09:00:09Z",
+      "timestamp": "2026-10-01T09:00:09+00:00",
       "kind": "tool",
       "status": "success"
     },
     {
       "id": "SYNTHETIC-loop-5",
       "task_id": "SYNTHETIC-waste",
-      "timestamp": "2026-10-01T09:00:10Z",
+      "timestamp": "2026-10-01T09:00:10+00:00",
       "kind": "tool",
       "status": "success"
     },
     {
       "id": "SYNTHETIC-edit_file-0",
       "task_id": "SYNTHETIC-waste",
-      "timestamp": "2026-10-01T09:00:12Z",
+      "timestamp": "2026-10-01T09:00:12+00:00",
       "kind": "tool",
       "status": "success"
     },
     {
       "id": "SYNTHETIC-edit_file-1",
       "task_id": "SYNTHETIC-waste",
-      "timestamp": "2026-10-01T09:00:13Z",
+      "timestamp": "2026-10-01T09:00:13+00:00",
       "kind": "tool",
       "status": "success"
     },
     {
       "id": "SYNTHETIC-edit_file-2",
       "task_id": "SYNTHETIC-waste",
-      "timestamp": "2026-10-01T09:00:14Z",
+      "timestamp": "2026-10-01T09:00:14+00:00",
       "kind": "tool",
       "status": "success"
     },
     {
       "id": "SYNTHETIC-read_file-0",
       "task_id": "SYNTHETIC-waste",
-      "timestamp": "2026-10-01T09:00:16Z",
+      "timestamp": "2026-10-01T09:00:16+00:00",
       "kind": "tool",
       "status": "success"
     },
     {
       "id": "SYNTHETIC-read_file-1",
       "task_id": "SYNTHETIC-waste",
-      "timestamp": "2026-10-01T09:00:17Z",
+      "timestamp": "2026-10-01T09:00:17+00:00",
       "kind": "tool",
       "status": "success"
     },
     {
       "id": "SYNTHETIC-read_file-2",
       "task_id": "SYNTHETIC-waste",
-      "timestamp": "2026-10-01T09:00:18Z",
+      "timestamp": "2026-10-01T09:00:18+00:00",
       "kind": "tool",
       "status": "success"
     },
     {
       "id": "SYNTHETIC-context-0",
       "task_id": "SYNTHETIC-waste",
-      "timestamp": "2026-10-01T09:00:20Z",
+      "timestamp": "2026-10-01T09:00:20+00:00",
       "kind": "model",
       "status": "success"
     },
     {
       "id": "SYNTHETIC-context-1",
       "task_id": "SYNTHETIC-waste",
-      "timestamp": "2026-10-01T09:00:21Z",
+      "timestamp": "2026-10-01T09:00:21+00:00",
       "kind": "model",
       "status": "success"
     },
     {
       "id": "SYNTHETIC-context-2",
       "task_id": "SYNTHETIC-waste",
-      "timestamp": "2026-10-01T09:00:22Z",
+      "timestamp": "2026-10-01T09:00:22+00:00",
       "kind": "model",
       "status": "success"
     },
     {
       "id": "SYNTHETIC-no-result",
       "task_id": "SYNTHETIC-waste",
-      "timestamp": "2026-10-01T09:00:24Z",
+      "timestamp": "2026-10-01T09:00:24+00:00",
       "kind": "tool",
       "status": "success"
     },
     {
       "id": "SYNTHETIC-quality",
       "task_id": "SYNTHETIC-waste",
-      "timestamp": "2026-10-01T09:00:25Z",
+      "timestamp": "2026-10-01T09:00:25+00:00",
       "kind": "tool",
       "status": "success"
     },
     {
       "id": "SYNTHETIC-wait",
       "task_id": "SYNTHETIC-waste",
-      "timestamp": "2026-10-01T09:00:26Z",
+      "timestamp": "2026-10-01T09:00:26+00:00",
       "kind": "wait",
       "status": "success"
     },
     {
       "id": "SYNTHETIC-failed-task",
       "task_id": "SYNTHETIC-waste",
-      "timestamp": "2026-10-01T09:00:30Z",
+      "timestamp": "2026-10-01T09:00:30+00:00",
       "kind": "task",
       "status": "failed"
     },
     {
       "id": "SYNTHETIC-after-failure",
       "task_id": "SYNTHETIC-waste",
-      "timestamp": "2026-10-01T09:00:35Z",
+      "timestamp": "2026-10-01T09:00:35+00:00",
       "kind": "model",
       "status": "success"
     }

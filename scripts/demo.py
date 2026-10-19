@@ -33,19 +33,20 @@ def main():
             evidence.append(run(["report", audit, "--format", format, "-o", f"examples/reports/{name}.{ext}"]))
     comparison = "examples/reports/comparison.json"
     evidence.append(run(["compare", "examples/reports/success.events.json", "examples/reports/claude.events.json", "--pricing", prices, "-o", comparison]))
-    for format, ext in (("html", "html"), ("markdown", "md")):
+    for format, ext in (("html", "html"), ("markdown", "md"), ("csv", "csv")):
         evidence.append(run(["report", comparison, "--format", format, "-o", f"examples/reports/comparison.{ext}"]))
     evidence.append(run(["pricing", prices]))
     evidence.append(run(["doctor", "--input", "examples/success.jsonl", "--pricing", prices]))
     evidence.append(run(["import", "examples/success.csv", "--format", "csv", "-o", "examples/reports/csv.events.json"]))
+    evidence.append(run(["analyze", "examples/reports/waste.events.json", "--pricing", prices, "--rules", "examples/rules.json", "-o", "examples/reports/waste.custom-rules.json"]))
     for name, fmt in (("codex-native", "codex"), ("claude-native", "claude"), ("openai-native", "openai")):
         evidence.append(run(["import", f"examples/{name}.jsonl", "--format", fmt, "-o", f"examples/reports/{name}.events.json"]))
-    (out / "cli-evidence.json").write_text(json.dumps(evidence, indent=2), encoding="utf-8")
+    (out / "cli-evidence.json").write_text(json.dumps(evidence, indent=2) + "\n", encoding="utf-8", newline="\n")
     summary = {}
     for name in ("success", "waste", "claude"):
         r = json.loads((out / f"{name}.audit.json").read_text(encoding="utf-8"))
         summary[name] = {"totals": r["totals"], "findings": len(r["findings"]), "rules": sorted({f["rule"] for f in r["findings"]}), "roi": r["tasks"][0]["roi"]}
-    (out / "demo-summary.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")
+    (out / "demo-summary.json").write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8", newline="\n")
     print(json.dumps(summary, indent=2))
 
 

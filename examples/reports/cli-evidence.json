@@ -8,13 +8,13 @@
   {
     "command": "agentwaste analyze --help",
     "exit_code": 0,
-    "stdout": "usage: agentwaste analyze [-h] [--pricing PRICING] -o OUTPUT input\n\npositional arguments:\n  input\n\noptions:\n  -h, --help            show this help message and exit\n  --pricing PRICING\n  -o OUTPUT, --output OUTPUT",
+    "stdout": "usage: agentwaste analyze [-h] [--pricing PRICING] [--rules RULES] -o OUTPUT\n                          input\n\npositional arguments:\n  input\n\noptions:\n  -h, --help            show this help message and exit\n  --pricing PRICING\n  --rules RULES         Versioned heuristic thresholds; no remote\n                        configuration\n  -o OUTPUT, --output OUTPUT",
     "stderr": ""
   },
   {
     "command": "agentwaste compare --help",
     "exit_code": 0,
-    "stdout": "usage: agentwaste compare [-h] [--pricing PRICING]\n                          [--by {agent,model,prompt_strategy,workflow}] -o\n                          OUTPUT\n                          inputs [inputs ...]\n\npositional arguments:\n  inputs\n\noptions:\n  -h, --help            show this help message and exit\n  --pricing PRICING\n  --by {agent,model,prompt_strategy,workflow}\n  -o OUTPUT, --output OUTPUT",
+    "stdout": "usage: agentwaste compare [-h] [--pricing PRICING] [--rules RULES]\n                          [--by {agent,model,prompt_strategy,workflow}] -o\n                          OUTPUT\n                          inputs [inputs ...]\n\npositional arguments:\n  inputs\n\noptions:\n  -h, --help            show this help message and exit\n  --pricing PRICING\n  --rules RULES\n  --by {agent,model,prompt_strategy,workflow}\n  -o OUTPUT, --output OUTPUT",
     "stderr": ""
   },
   {
@@ -144,6 +144,12 @@
     "stderr": ""
   },
   {
+    "command": "agentwaste report examples/reports/comparison.json --format csv -o examples/reports/comparison.csv",
+    "exit_code": 0,
+    "stdout": "Report written",
+    "stderr": ""
+  },
+  {
     "command": "agentwaste pricing examples/pricing.json",
     "exit_code": 0,
     "stdout": "{\n  \"schema_version\": \"1.0\",\n  \"prices\": [\n    {\n      \"id\": \"SYNTHETIC-2026-v1\",\n      \"model\": \"SYNTHETIC-model\",\n      \"currency\": \"USD\",\n      \"source\": \"SYNTHETIC TEST PRICES; NOT A PROVIDER QUOTE\",\n      \"effective_from\": \"2026-01-01\",\n      \"effective_to\": \"2026-12-31\",\n      \"input_per_million\": \"2\",\n      \"output_per_million\": \"8\",\n      \"cache_read_per_million\": \"0.5\",\n      \"cache_write_per_million\": \"3\"\n    }\n  ],\n  \"notice\": \"No bundled commercial model prices; explicit provenance and date windows required.\"\n}",
@@ -159,6 +165,12 @@
     "command": "agentwaste import examples/success.csv --format csv -o examples/reports/csv.events.json",
     "exit_code": 0,
     "stdout": "Written import result",
+    "stderr": ""
+  },
+  {
+    "command": "agentwaste analyze examples/reports/waste.events.json --pricing examples/pricing.json --rules examples/rules.json -o examples/reports/waste.custom-rules.json",
+    "exit_code": 0,
+    "stdout": "Written analyze result",
     "stderr": ""
   },
   {

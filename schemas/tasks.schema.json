@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agentwaste.invalid/schemas/tasks.schema.json",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "task_id": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 160
+      },
+      "agent": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 160
+      },
+      "task_key": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 160
+      },
+      "difficulty": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 160
+      },
+      "acceptance_id": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 160
+      },
+      "model": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 160
+      },
+      "prompt_strategy": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 160
+      },
+      "workflow": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 160
+      },
+      "status": {
+        "enum": [
+          "success",
+          "failed",
+          "unknown",
+          "running"
+        ]
+      },
+      "accepted": {
+        "type": "boolean"
+      },
+      "baseline_verified": {
+        "type": "boolean"
+      },
+      "synthetic": {
+        "type": "boolean"
+      },
+      "baseline_minutes": {
+        "type": "string",
+        "pattern": "^\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?$",
+        "format": "money"
+      },
+      "human_minutes": {
+        "type": "string",
+        "pattern": "^\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?$",
+        "format": "money"
+      },
+      "rework_minutes": {
+        "type": "string",
+        "pattern": "^\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?$",
+        "format": "money"
+      },
+      "hourly_rate": {
+        "type": "string",
+        "pattern": "^\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?$",
+        "format": "money"
+      },
+      "currency": {
+        "type": "string",
+        "pattern": "^[A-Z]{3}$"
+      }
+    },
+    "required": [
+      "task_id"
+    ],
+    "dependentRequired": {
+      "hourly_rate": [
+        "currency"
+      ]
+    }
+  }
+}

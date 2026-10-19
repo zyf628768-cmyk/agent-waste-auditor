@@ -1,0 +1,7 @@
+task_key,difficulty,acceptance_id,variant,dimension,attempts,known_outcomes,success_rate,human_minutes,currency,origin,total,per_attempt,per_success
+SYNTHETIC-fix-parser,easy,SYNTHETIC-parser-tests-v1,claude-code,agent,1,1,1,20,USD,actual,0.04,0.04,0.04
+SYNTHETIC-fix-parser,easy,SYNTHETIC-parser-tests-v1,claude-code,agent,1,1,1,20,USD,estimated,0.61,0.61,0.61
+SYNTHETIC-fix-parser,easy,SYNTHETIC-parser-tests-v1,claude-code,agent,1,1,1,20,USD,manual,12,12,12
+SYNTHETIC-fix-parser,easy,SYNTHETIC-parser-tests-v1,codex,agent,1,1,1,10,USD,actual,0.02,0.02,0.02
+SYNTHETIC-fix-parser,easy,SYNTHETIC-parser-tests-v1,codex,agent,1,1,1,10,USD,estimated,0.3,0.3,0.3
+SYNTHETIC-fix-parser,easy,SYNTHETIC-parser-tests-v1,codex,agent,1,1,1,10,USD,manual,6,6,6

@@ -9,7 +9,7 @@
       "id": "codex-3",
       "task_id": "SYNTHETIC-native-codex",
       "agent": "codex",
-      "timestamp": "2026-10-01T00:00:00Z",
+      "timestamp": "2026-10-01T00:00:00+00:00",
       "source_line": 3,
       "kind": "model",
       "model": "SYNTHETIC-model",

@@ -55,8 +55,64 @@ test_read_and_edit (test_audit.Waste.test_read_and_edit) ... ok
 test_reasonable_retries (test_audit.Waste.test_reasonable_retries) ... ok
 test_repeated_failures_evidence (test_audit.Waste.test_repeated_failures_evidence) ... ok
 test_single_duplicate_insufficient (test_audit.Waste.test_single_duplicate_insufficient) ... ok
+test_atomic_failure_preserves_existing_report (test_refinements.ComparisonAndReports.test_atomic_failure_preserves_existing_report) ... ok
+test_comparison_csv_contains_metrics (test_refinements.ComparisonAndReports.test_comparison_csv_contains_metrics) ... ok
+test_comparison_outcome_counts_consistent (test_refinements.ComparisonAndReports.test_comparison_outcome_counts_consistent) ... ok
+test_cross_task_charge_attribution_rejected (test_refinements.ComparisonAndReports.test_cross_task_charge_attribution_rejected) ... ok
+test_explicit_failed_status_is_known_without_acceptance (test_refinements.ComparisonAndReports.test_explicit_failed_status_is_known_without_acceptance) ... ok
+test_forged_report_totals_rejected (test_refinements.ComparisonAndReports.test_forged_report_totals_rejected) ... ok
+test_human_coverage_groups_separate (test_refinements.ComparisonAndReports.test_human_coverage_groups_separate) ... ok
+test_markdown_labels_cannot_embed_remote_images (test_refinements.ComparisonAndReports.test_markdown_labels_cannot_embed_remote_images) ... ok
+test_monetary_basis_groups_separate (test_refinements.ComparisonAndReports.test_monetary_basis_groups_separate) ... ok
+test_roi_label_requires_its_economic_evidence (test_refinements.ComparisonAndReports.test_roi_label_requires_its_economic_evidence) ... ok
+test_runtime_and_external_schema_agree (test_refinements.ComparisonAndReports.test_runtime_and_external_schema_agree) ... ok
+test_unequal_attempts_have_normalized_costs (test_refinements.ComparisonAndReports.test_unequal_attempts_have_normalized_costs) ... ok
+test_caller_decimal_context_does_not_change_cost (test_refinements.FinancialBoundaries.test_caller_decimal_context_does_not_change_cost) ... ok
+test_caller_rounding_and_traps_do_not_change_audit (test_refinements.FinancialBoundaries.test_caller_rounding_and_traps_do_not_change_audit) ... ok
+test_coverage_counts_explicit_wait_charge (test_refinements.FinancialBoundaries.test_coverage_counts_explicit_wait_charge) ... ok
+test_empty_price_object_not_silently_defaulted (test_refinements.FinancialBoundaries.test_empty_price_object_not_silently_defaulted) ... ok
+test_missing_model_not_inferred_from_other_calls (test_refinements.FinancialBoundaries.test_missing_model_not_inferred_from_other_calls) ... ok
+test_model_metadata_cannot_override_evidence (test_refinements.FinancialBoundaries.test_model_metadata_cannot_override_evidence) ... ok
+test_noncanonical_price_dates_rejected (test_refinements.FinancialBoundaries.test_noncanonical_price_dates_rejected) ... ok
+test_precise_elapsed_microseconds (test_refinements.FinancialBoundaries.test_precise_elapsed_microseconds) ... ok
+test_repeating_human_fraction_not_rejected (test_refinements.FinancialBoundaries.test_repeating_human_fraction_not_rejected) ... ok
+test_unbounded_exponents_rejected (test_refinements.FinancialBoundaries.test_unbounded_exponents_rejected) ... ok
+test_utc_price_date (test_refinements.FinancialBoundaries.test_utc_price_date) ... ok
+test_zero_estimated_cost_still_scenario (test_refinements.FinancialBoundaries.test_zero_estimated_cost_still_scenario) ... ok
+test_custom_threshold (test_refinements.HeuristicBoundaries.test_custom_threshold) ... ok
+test_explicit_reopen_clears_failure (test_refinements.HeuristicBoundaries.test_explicit_reopen_clears_failure) ... ok
+test_invalid_rules (test_refinements.HeuristicBoundaries.test_invalid_rules) ... ok
+test_loop_threshold_applies_to_cycle_count (test_refinements.HeuristicBoundaries.test_loop_threshold_applies_to_cycle_count) ... ok
+test_progress_interrupts_repetition (test_refinements.HeuristicBoundaries.test_progress_interrupts_repetition) ... ok
+test_time_window_prevents_remote_repeats (test_refinements.HeuristicBoundaries.test_time_window_prevents_remote_repeats) ... ok
+test_unconfigured_currency_not_called_expensive (test_refinements.HeuristicBoundaries.test_unconfigured_currency_not_called_expensive) ... ok
+test_unknown_task_marker_does_not_reopen_failure (test_refinements.HeuristicBoundaries.test_unknown_task_marker_does_not_reopen_failure) ... ok
+test_zero_charge_after_failure_is_not_spend (test_refinements.HeuristicBoundaries.test_zero_charge_after_failure_is_not_spend) ... ok
+test_accepted_status_contradiction (test_refinements.InputBoundaries.test_accepted_status_contradiction) ... ok
+test_duplicate_json_keys (test_refinements.InputBoundaries.test_duplicate_json_keys) ... ok
+test_generic_task_identity_collision_rejected (test_refinements.InputBoundaries.test_generic_task_identity_collision_rejected) ... ok
+test_human_event_category (test_refinements.InputBoundaries.test_human_event_category) ... ok
+test_label_types_and_limits (test_refinements.InputBoundaries.test_label_types_and_limits) ... ok
+test_malformed_csv_not_silently_accepted (test_refinements.InputBoundaries.test_malformed_csv_not_silently_accepted) ... ok
+test_marker_charge_needs_category (test_refinements.InputBoundaries.test_marker_charge_needs_category) ... ok
+test_named_secret_values_redacted_before_hashing (test_refinements.InputBoundaries.test_named_secret_values_redacted_before_hashing) ... ok
+test_nesting_bound (test_refinements.InputBoundaries.test_nesting_bound) ... ok
+test_no_truncation_collision (test_refinements.InputBoundaries.test_no_truncation_collision) ... ok
+test_non_utf8_code (test_refinements.InputBoundaries.test_non_utf8_code) ... ok
+test_nonfinite_json (test_refinements.InputBoundaries.test_nonfinite_json) ... ok
+test_partial_cache_preserved_as_unknown (test_refinements.InputBoundaries.test_partial_cache_preserved_as_unknown) ... ok
+test_safe_error_location (test_refinements.InputBoundaries.test_safe_error_location) ... ok
+test_task_labels_not_mistaken_for_secret_tokens (test_refinements.InputBoundaries.test_task_labels_not_mistaken_for_secret_tokens) ... ok
+test_unicode_line_separator_inside_json_string (test_refinements.InputBoundaries.test_unicode_line_separator_inside_json_string) ... ok
+test_untrusted_warning_dropped (test_refinements.InputBoundaries.test_untrusted_warning_dropped) ... ok
+test_claude_conflicting_request_usage_rejected (test_refinements.NativeBoundaries.test_claude_conflicting_request_usage_rejected) ... ok
+test_claude_invalid_counts_rejected (test_refinements.NativeBoundaries.test_claude_invalid_counts_rejected) ... ok
+test_claude_missing_usage_not_omitted (test_refinements.NativeBoundaries.test_claude_missing_usage_not_omitted) ... ok
+test_claude_positive_partial_cache_downgrades (test_refinements.NativeBoundaries.test_claude_positive_partial_cache_downgrades) ... ok
+test_claude_regressing_output_rejected (test_refinements.NativeBoundaries.test_claude_regressing_output_rejected) ... ok
+test_codex_gap_preserves_unknown_cost_event (test_refinements.NativeBoundaries.test_codex_gap_preserves_unknown_cost_event) ... ok
 
 ----------------------------------------------------------------------
-Ran 57 tests in 1.149s
+Ran 113 tests in 2.276s
 
 OK

@@ -1,8 +1,7 @@
 {
   "installed_wheel": "agent_waste_auditor-0.1.0-py3-none-any.whl",
   "isolated_target_import": true,
-  "console_entrypoint": "bin/agentwaste.exe",
-  "passed_commands": 13,
+  "passed_commands": 17,
   "results": [
     {
       "command": "agentwaste --version",
@@ -23,15 +22,9 @@
       "stderr": ""
     },
     {
-      "command": "agentwaste compare TEMP_OUTPUT\\events.json --pricing PROJECT\\examples\\pricing.json -o TEMP_OUTPUT\\compare.json",
+      "command": "agentwaste compare TEMP_OUTPUT\\events.json --pricing PROJECT\\examples\\pricing.json -o TEMP_OUTPUT\\comparison.json",
       "exit_code": 0,
       "stdout": "Written compare result\n",
-      "stderr": ""
-    },
-    {
-      "command": "agentwaste report TEMP_OUTPUT\\audit.json -o TEMP_OUTPUT\\audit.html",
-      "exit_code": 0,
-      "stdout": "Report written\n",
       "stderr": ""
     },
     {
@@ -43,7 +36,37 @@
     {
       "command": "agentwaste doctor --input PROJECT\\examples\\success.jsonl --pricing PROJECT\\examples\\pricing.json",
       "exit_code": 0,
-      "stdout": "{\n  \"read_only\": true,\n  \"ok\": true,\n  \"checks\": [\n    {\n      \"check\": \"python_3_11\",\n      \"ok\": true,\n      \"detail\": \"3.12.14\"\n    },\n    {\n      \"check\": \"runtime_dependencies\",\n      \"ok\": true,\n      \"detail\": \"standard library only\"\n    },\n    {\n      \"check\": \"jsonschema_optional\",\n      \"ok\": true,\n      \"available\": false\n    },\n    {\n      \"check\": \"pricing\",\n      \"ok\": true,\n      \"entries\": 1\n    },\n    {\n      \"check\": \"log_compatibility\",\n      \"ok\": true,\n      \"profile\": \"agentwaste-1.0\",\n      \"warnings\": []\n    }\n  ]\n}\n",
+      "stdout": "{\n  \"read_only\": true,\n  \"ok\": true,\n  \"checks\": [\n    {\n      \"check\": \"python_3_11\",\n      \"ok\": true,\n      \"detail\": \"3.12.14\"\n    },\n    {\n      \"check\": \"runtime_dependencies\",\n      \"ok\": true,\n      \"detail\": \"standard library only\"\n    },\n    {\n      \"check\": \"jsonschema_optional\",\n      \"ok\": true,\n      \"available\": true\n    },\n    {\n      \"check\": \"pricing\",\n      \"ok\": true,\n      \"entries\": 1\n    },\n    {\n      \"check\": \"log_compatibility\",\n      \"ok\": true,\n      \"profile\": \"agentwaste-1.0\",\n      \"warnings\": []\n    }\n  ]\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": "agentwaste report TEMP_OUTPUT\\audit.json --format json -o TEMP_OUTPUT\\report.json",
+      "exit_code": 0,
+      "stdout": "Report written\n",
+      "stderr": ""
+    },
+    {
+      "command": "agentwaste report TEMP_OUTPUT\\audit.json --format html -o TEMP_OUTPUT\\report.html",
+      "exit_code": 0,
+      "stdout": "Report written\n",
+      "stderr": ""
+    },
+    {
+      "command": "agentwaste report TEMP_OUTPUT\\audit.json --format markdown -o TEMP_OUTPUT\\report.markdown",
+      "exit_code": 0,
+      "stdout": "Report written\n",
+      "stderr": ""
+    },
+    {
+      "command": "agentwaste report TEMP_OUTPUT\\audit.json --format csv -o TEMP_OUTPUT\\report.csv",
+      "exit_code": 0,
+      "stdout": "Report written\n",
+      "stderr": ""
+    },
+    {
+      "command": "agentwaste report TEMP_OUTPUT\\comparison.json --format csv -o TEMP_OUTPUT\\comparison.csv",
+      "exit_code": 0,
+      "stdout": "Report written\n",
       "stderr": ""
     },
     {
@@ -55,13 +78,13 @@
     {
       "command": "agentwaste analyze --help",
       "exit_code": 0,
-      "stdout": "usage: agentwaste analyze [-h] [--pricing PRICING] -o OUTPUT input\n\npositional arguments:\n  input\n\noptions:\n  -h, --help            show this help message and exit\n  --pricing PRICING\n  -o OUTPUT, --output OUTPUT\n",
+      "stdout": "usage: agentwaste analyze [-h] [--pricing PRICING] [--rules RULES] -o OUTPUT\n                          input\n\npositional arguments:\n  input\n\noptions:\n  -h, --help            show this help message and exit\n  --pricing PRICING\n  --rules RULES         Versioned heuristic thresholds; no remote\n                        configuration\n  -o OUTPUT, --output OUTPUT\n",
       "stderr": ""
     },
     {
       "command": "agentwaste compare --help",
       "exit_code": 0,
-      "stdout": "usage: agentwaste compare [-h] [--pricing PRICING]\n                          [--by {agent,model,prompt_strategy,workflow}] -o\n                          OUTPUT\n                          inputs [inputs ...]\n\npositional arguments:\n  inputs\n\noptions:\n  -h, --help            show this help message and exit\n  --pricing PRICING\n  --by {agent,model,prompt_strategy,workflow}\n  -o OUTPUT, --output OUTPUT\n",
+      "stdout": "usage: agentwaste compare [-h] [--pricing PRICING] [--rules RULES]\n                          [--by {agent,model,prompt_strategy,workflow}] -o\n                          OUTPUT\n                          inputs [inputs ...]\n\npositional arguments:\n  inputs\n\noptions:\n  -h, --help            show this help message and exit\n  --pricing PRICING\n  --rules RULES\n  --by {agent,model,prompt_strategy,workflow}\n  -o OUTPUT, --output OUTPUT\n",
       "stderr": ""
     },
     {

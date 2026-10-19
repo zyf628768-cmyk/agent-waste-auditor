@@ -8,7 +8,7 @@
       "schema_version": "1.0",
       "task_id": "SYNTHETIC-native-claude",
       "agent": "claude-code",
-      "timestamp": "2026-10-01T00:00:00Z",
+      "timestamp": "2026-10-01T00:00:00+00:00",
       "source_line": 1,
       "id": "claude-SYNTHETIC-msg",
       "kind": "model",

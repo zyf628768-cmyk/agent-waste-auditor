@@ -18,6 +18,8 @@ python scripts/demo.py
 
 六个命令 `import/analyze/compare/report/pricing/doctor` 均支持 `--help`；也可在源码目录执行 `python -m agentwaste`。报告支持 JSON、Markdown、离线 HTML 和费用明细 CSV。导入支持通用 JSONL/CSV、实验性 Codex/Claude Code 本地格式、完整 OpenAI Responses/Chat Completions 对象；不需要联网。CLI 会拒绝输出覆盖本次命令指定的输入文件，但可能覆盖已有报告文件。
 
+发布前复核进一步增加了严格嵌套 Schema、重复 JSON 键与畸形 CSV 拒绝、原子报告写入、可配置检测窗口和安装后验证。金额计算固定在局部 128 位 Decimal 上下文中，不受调用方精度设置影响；极端数值会明确拒绝。
+
 ## 核算原则
 
 - 所有金额用 Decimal，保存为字符串；按原币种、真实记录 actual、已知价格估算 estimated、用户手工 manual 分账。actual 仅表示来源声称实际收费，不代表已对账。
@@ -38,6 +40,8 @@ python scripts/demo.py
 | 同验收 Agent 比较 | [comparison.html](examples/reports/comparison.html) | 6.32 与 12.65；均为 1/1 成功，人工 10 与 20 分钟 |
 
 这些不是 Codex/Claude 的真实基准评测。比较必须有相同任务键、难度、验收 ID，并按费用覆盖范围分组；缺失元数据排除，全局不排名。`compare --by` 支持 agent、model、prompt_strategy、workflow。
+
+比较现在进一步按真实/估算费用来源、人工投入完整度、未知原因和币种分组，展示每次尝试及每个成功任务成本、已知/未知结果数量和耗时中位数，避免尝试次数不同导致总额误导。比较 CSV 也包含这些指标。`analyze --rules examples/rules.json` 可配置重复次数、时间窗口、上下文 Token 和按原币种设置的高费用阈值；默认窗口一小时，仅默认设置 USD 1 高费用复核线，已确认进展会中断重复候选序列。
 
 ## 与现有产品的关系
 

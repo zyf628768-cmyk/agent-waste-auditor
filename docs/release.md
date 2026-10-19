@@ -4,6 +4,20 @@ Local release assets: source ZIP, source distribution, universal Python wheel, S
 
 Local Git history uses the project placeholder author `AgentWaste Development <agentwaste@example.invalid>`, without changing global Git identity. Review/amend authorship before a public push if the repository owner requires a personal identity. The local repository has no configured origin or published release tag.
 
+This describes the prepublication snapshot. The user subsequently authorized optimization followed by publication to `zyf628768-cmyk/agent-waste-auditor`, including the required workflow OAuth scope. Authentication still requires the user's normal GitHub device authorization; no credentials are embedded in this project. Consult the actual GitHub Release and publication evidence for live remote state.
+
+After reviewing/committing final validation evidence and building artifacts:
+
+```sh
+python scripts/package_release.py
+python scripts/verify_release.py
+python scripts/publish.py --repo zyf628768-cmyk/agent-waste-auditor
+# The previous command is a local plan only. After authenticated authorization:
+python scripts/publish.py --repo zyf628768-cmyk/agent-waste-auditor --execute
+```
+
+The publisher checks clean source, checksums and ZIP commit identity, verifies the authenticated owner, creates the public repository only if absent, preserves existing origin/visibility, uses a process-scoped Git credential helper, pushes without force, waits for `tests.yml` on the exact commit, checks all 12 matrix jobs, and only then tags/publishes verified assets. Any failure stops publication; no old tag, existing repository history or visibility is overwritten. It does not request/store/display secrets itself or configure a global Git identity/helper. `docs/RELEASE_NOTES.md` is the release notes file.
+
 Before public release:
 
 1. Review `docs/validation.md`, `SECURITY.md`, SYNTHETIC labels and all assets. Confirm repository owner and public visibility, repository name `agent-waste-auditor`, MIT license and release authorization.

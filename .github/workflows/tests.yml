@@ -1,7 +1,14 @@
 name: tests
-on: [push, pull_request, workflow_dispatch]
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
 permissions:
   contents: read
+concurrency:
+  group: tests-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   test:
     strategy:
@@ -10,14 +17,28 @@ jobs:
         os: [ubuntu-latest, windows-latest, macos-latest]
         python: ['3.11', '3.12', '3.13', '3.14']
     runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: ${{ matrix.python }}
-      - run: python -m pip install '.[test]' build
+      - run: python -m pip install jsonschema build
       - run: python -m unittest discover -s tests -v
       - run: python scripts/demo.py
       - run: python -m build
+      - run: python -m pip install --no-deps --force-reinstall dist/agent_waste_auditor-0.1.0-py3-none-any.whl
+      - run: python scripts/smoke_wheel.py
       - run: agentwaste doctor --input examples/success.jsonl --pricing examples/pricing.json
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
+        with:
+          name: audit-evidence-${{ matrix.os }}-py${{ matrix.python }}
+          path: |
+            docs/installation-evidence.json
+            examples/reports/cli-evidence.json
+            examples/reports/demo-summary.json
+            dist/*
 

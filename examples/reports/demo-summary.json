@@ -15,7 +15,7 @@
       "baseline_cost": "36",
       "total_cost": "6.32",
       "net_savings": "29.68",
-      "roi": "4.696202531645569620253164557",
+      "roi": "4.6962025316455696202531645569620253164556962025316455696202531645569620253164556962025316455696202531645569620253164556962025316",
       "assumptions": [
         "user-entered baseline and human effort",
         "rework minutes exclude other human minutes",
@@ -63,7 +63,7 @@
       "baseline_cost": "36",
       "total_cost": "12.65",
       "net_savings": "23.35",
-      "roi": "1.845849802371541501976284585",
+      "roi": "1.8458498023715415019762845849802371541501976284584980237154150197628458498023715415019762845849802371541501976284584980237154150",
       "assumptions": [
         "user-entered baseline and human effort",
         "rework minutes exclude other human minutes",

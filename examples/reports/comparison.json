@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.0",
+  "report_type": "comparison",
+  "synthetic": true,
+  "dimension": "agent",
+  "groups": [
+    {
+      "task_key": "SYNTHETIC-fix-parser",
+      "difficulty": "easy",
+      "acceptance_id": "SYNTHETIC-parser-tests-v1",
+      "cost_coverage_complete": true,
+      "comparable": true,
+      "agents": [
+        {
+          "agent": "claude-code",
+          "dimension": "agent",
+          "attempts": 1,
+          "known_outcomes": 1,
+          "success_rate": "1",
+          "totals": {
+            "USD": {
+              "actual": "0.04",
+              "estimated": "0.61",
+              "manual": "12"
+            }
+          },
+          "human_minutes": "20",
+          "elapsed_seconds": [
+            "22.0"
+          ],
+          "rework_events": 0
+        },
+        {
+          "agent": "codex",
+          "dimension": "agent",
+          "attempts": 1,
+          "known_outcomes": 1,
+          "success_rate": "1",
+          "totals": {
+            "USD": {
+              "actual": "0.02",
+              "estimated": "0.3",
+              "manual": "6"
+            }
+          },
+          "human_minutes": "10",
+          "elapsed_seconds": [
+            "12.0"
+          ],
+          "rework_events": 0
+        }
+      ]
+    }
+  ],
+  "excluded": [],
+  "caution": "No global ranking; groups separate task identity, difficulty, acceptance and observed cost coverage. Small samples are descriptive."
+}

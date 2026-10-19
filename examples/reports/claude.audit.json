@@ -1,0 +1,203 @@
+{
+  "schema_version": "1.0",
+  "report_type": "audit",
+  "synthetic": true,
+  "totals": {
+    "USD": {
+      "actual": "0.04",
+      "estimated": "0.61",
+      "manual": "12"
+    }
+  },
+  "tasks": [
+    {
+      "task_id": "SYNTHETIC-claude",
+      "agent": "claude-code",
+      "task_key": "SYNTHETIC-fix-parser",
+      "difficulty": "easy",
+      "acceptance_id": "SYNTHETIC-parser-tests-v1",
+      "model": "SYNTHETIC-model",
+      "prompt_strategy": null,
+      "workflow": null,
+      "status": "success",
+      "accepted": true,
+      "synthetic": true,
+      "human_minutes": "20",
+      "rework_minutes": "0",
+      "totals": {
+        "USD": {
+          "actual": "0.04",
+          "estimated": "0.61",
+          "manual": "12"
+        }
+      },
+      "category_totals": {
+        "human": {
+          "USD": {
+            "actual": "0",
+            "estimated": "0",
+            "manual": "12"
+          }
+        },
+        "model": {
+          "USD": {
+            "actual": "0",
+            "estimated": "0.61",
+            "manual": "0"
+          }
+        },
+        "rework": {
+          "USD": {
+            "actual": "0",
+            "estimated": "0",
+            "manual": "0"
+          }
+        },
+        "tool": {
+          "USD": {
+            "actual": "0.04",
+            "estimated": "0",
+            "manual": "0"
+          }
+        }
+      },
+      "failed_step_costs": {},
+      "unknown_costs": [],
+      "cost_coverage": {
+        "known_events": 2,
+        "cost_bearing_events": 2,
+        "complete": true
+      },
+      "elapsed_seconds": "22.0",
+      "duration_sum_ms": 0,
+      "queue_ms": 0,
+      "human_wait_ms": 0,
+      "rework_events": 0,
+      "roi": {
+        "status": "scenario_estimate",
+        "currency": "USD",
+        "baseline_cost": "36",
+        "total_cost": "12.65",
+        "net_savings": "23.35",
+        "roi": "1.845849802371541501976284585",
+        "assumptions": [
+          "user-entered baseline and human effort",
+          "rework minutes exclude other human minutes",
+          "ROI = (baseline - task cost) / task cost; zero cost has undefined ROI"
+        ]
+      }
+    }
+  ],
+  "charges": [
+    {
+      "amount": "0.61",
+      "currency": "USD",
+      "origin": "estimated",
+      "price_id": "SYNTHETIC-2026-v1",
+      "event_id": "SYNTHETIC-c-model",
+      "task_id": "SYNTHETIC-claude",
+      "category": "model",
+      "failed": false,
+      "source": "event"
+    },
+    {
+      "amount": "0.04",
+      "origin": "actual",
+      "currency": "USD",
+      "event_id": "SYNTHETIC-c-tool",
+      "task_id": "SYNTHETIC-claude",
+      "category": "tool",
+      "failed": false,
+      "source": "event"
+    },
+    {
+      "event_id": "task-human-human_minutes",
+      "task_id": "SYNTHETIC-claude",
+      "category": "human",
+      "source": "task_metadata",
+      "origin": "manual",
+      "currency": "USD",
+      "amount": "12"
+    },
+    {
+      "event_id": "task-human-rework_minutes",
+      "task_id": "SYNTHETIC-claude",
+      "category": "rework",
+      "source": "task_metadata",
+      "origin": "manual",
+      "currency": "USD",
+      "amount": "0"
+    }
+  ],
+  "findings": [],
+  "coverage": {
+    "events": 3,
+    "tasks": 1,
+    "unknown_cost_items": 0,
+    "warnings": [],
+    "scope": "specified files only; unobserved costs cannot be inferred"
+  },
+  "timeline": [
+    {
+      "id": "SYNTHETIC-c-model",
+      "task_id": "SYNTHETIC-claude",
+      "timestamp": "2026-10-01T09:00:00Z",
+      "kind": "model",
+      "status": "success"
+    },
+    {
+      "id": "SYNTHETIC-c-tool",
+      "task_id": "SYNTHETIC-claude",
+      "timestamp": "2026-10-01T09:00:10Z",
+      "kind": "tool",
+      "status": "success"
+    },
+    {
+      "id": "SYNTHETIC-c-end",
+      "task_id": "SYNTHETIC-claude",
+      "timestamp": "2026-10-01T09:00:22Z",
+      "kind": "task",
+      "status": "success"
+    }
+  ],
+  "trend": [
+    {
+      "date_utc": "2026-10-01",
+      "totals": {
+        "USD": {
+          "actual": "0.04",
+          "estimated": "0.61",
+          "manual": "0"
+        }
+      }
+    }
+  ],
+  "high_cost_steps": [
+    {
+      "amount": "0.61",
+      "currency": "USD",
+      "origin": "estimated",
+      "price_id": "SYNTHETIC-2026-v1",
+      "event_id": "SYNTHETIC-c-model",
+      "task_id": "SYNTHETIC-claude",
+      "category": "model",
+      "failed": false,
+      "source": "event"
+    },
+    {
+      "amount": "0.04",
+      "origin": "actual",
+      "currency": "USD",
+      "event_id": "SYNTHETIC-c-tool",
+      "task_id": "SYNTHETIC-claude",
+      "category": "tool",
+      "failed": false,
+      "source": "event"
+    }
+  ],
+  "successful_tasks": 1,
+  "average_cost_per_success": {
+    "USD": "12.65"
+  },
+  "average_cost_definition": "all observed task costs including failures / accepted successes; partial scope; currencies kept separate"
+}

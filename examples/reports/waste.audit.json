@@ -1,0 +1,973 @@
+{
+  "schema_version": "1.0",
+  "report_type": "audit",
+  "synthetic": true,
+  "totals": {
+    "USD": {
+      "actual": "2.42",
+      "estimated": "0.1254",
+      "manual": "27.50"
+    }
+  },
+  "tasks": [
+    {
+      "task_id": "SYNTHETIC-waste",
+      "agent": "codex",
+      "task_key": "SYNTHETIC-fix-parser",
+      "difficulty": "easy",
+      "acceptance_id": "SYNTHETIC-parser-tests-v1",
+      "model": "SYNTHETIC-model",
+      "prompt_strategy": null,
+      "workflow": null,
+      "status": "failed",
+      "accepted": false,
+      "synthetic": true,
+      "human_minutes": "15",
+      "rework_minutes": "30",
+      "totals": {
+        "USD": {
+          "actual": "2.42",
+          "estimated": "0.1254",
+          "manual": "27.50"
+        }
+      },
+      "category_totals": {
+        "human": {
+          "USD": {
+            "actual": "0",
+            "estimated": "0",
+            "manual": "9"
+          }
+        },
+        "model": {
+          "USD": {
+            "actual": "0",
+            "estimated": "0.1254",
+            "manual": "0"
+          }
+        },
+        "quality": {
+          "USD": {
+            "actual": "0",
+            "estimated": "0",
+            "manual": "0.50"
+          }
+        },
+        "rework": {
+          "USD": {
+            "actual": "0.12",
+            "estimated": "0",
+            "manual": "18"
+          }
+        },
+        "tool": {
+          "USD": {
+            "actual": "2.30",
+            "estimated": "0",
+            "manual": "0"
+          }
+        }
+      },
+      "failed_step_costs": {
+        "USD": {
+          "actual": "0.15",
+          "estimated": "0",
+          "manual": "0"
+        }
+      },
+      "unknown_costs": [],
+      "cost_coverage": {
+        "known_events": 21,
+        "cost_bearing_events": 21,
+        "complete": true
+      },
+      "elapsed_seconds": "35.0",
+      "duration_sum_ms": 60000,
+      "queue_ms": 10000,
+      "human_wait_ms": 20000,
+      "rework_events": 3,
+      "roi": {
+        "status": "unavailable",
+        "reason": "task not successfully accepted"
+      }
+    }
+  ],
+  "charges": [
+    {
+      "amount": "0.05",
+      "origin": "actual",
+      "currency": "USD",
+      "event_id": "SYNTHETIC-fail-0",
+      "task_id": "SYNTHETIC-waste",
+      "category": "tool",
+      "failed": true,
+      "source": "event"
+    },
+    {
+      "amount": "0.05",
+      "origin": "actual",
+      "currency": "USD",
+      "event_id": "SYNTHETIC-fail-1",
+      "task_id": "SYNTHETIC-waste",
+      "category": "tool",
+      "failed": true,
+      "source": "event"
+    },
+    {
+      "amount": "0.05",
+      "origin": "actual",
+      "currency": "USD",
+      "event_id": "SYNTHETIC-fail-2",
+      "task_id": "SYNTHETIC-waste",
+      "category": "tool",
+      "failed": true,
+      "source": "event"
+    },
+    {
+      "amount": "0.02",
+      "origin": "actual",
+      "currency": "USD",
+      "event_id": "SYNTHETIC-loop-0",
+      "task_id": "SYNTHETIC-waste",
+      "category": "tool",
+      "failed": false,
+      "source": "event"
+    },
+    {
+      "amount": "0.02",
+      "origin": "actual",
+      "currency": "USD",
+      "event_id": "SYNTHETIC-loop-1",
+      "task_id": "SYNTHETIC-waste",
+      "category": "tool",
+      "failed": false,
+      "source": "event"
+    },
+    {
+      "amount": "0.02",
+      "origin": "actual",
+      "currency": "USD",
+      "event_id": "SYNTHETIC-loop-2",
+      "task_id": "SYNTHETIC-waste",
+      "category": "tool",
+      "failed": false,
+      "source": "event"
+    },
+    {
+      "amount": "0.02",
+      "origin": "actual",
+      "currency": "USD",
+      "event_id": "SYNTHETIC-loop-3",
+      "task_id": "SYNTHETIC-waste",
+      "category": "tool",
+      "failed": false,
+      "source": "event"
+    },
+    {
+      "amount": "0.02",
+      "origin": "actual",
+      "currency": "USD",
+      "event_id": "SYNTHETIC-loop-4",
+      "task_id": "SYNTHETIC-waste",
+      "category": "tool",
+      "failed": false,
+      "source": "event"
+    },
+    {
+      "amount": "0.02",
+      "origin": "actual",
+      "currency": "USD",
+      "event_id": "SYNTHETIC-loop-5",
+      "task_id": "SYNTHETIC-waste",
+      "category": "tool",
+      "failed": false,
+      "source": "event"
+    },
+    {
+      "amount": "0.04",
+      "origin": "actual",
+      "currency": "USD",
+      "event_id": "SYNTHETIC-edit_file-0",
+      "task_id": "SYNTHETIC-waste",
+      "category": "rework",
+      "failed": false,
+      "source": "event"
+    },
+    {
+      "amount": "0.04",
+      "origin": "actual",
+      "currency": "USD",
+      "event_id": "SYNTHETIC-edit_file-1",
+      "task_id": "SYNTHETIC-waste",
+      "category": "rework",
+      "failed": false,
+      "source": "event"
+    },
+    {
+      "amount": "0.04",
+      "origin": "actual",
+      "currency": "USD",
+      "event_id": "SYNTHETIC-edit_file-2",
+      "task_id": "SYNTHETIC-waste",
+      "category": "rework",
+      "failed": false,
+      "source": "event"
+    },
+    {
+      "amount": "0.01",
+      "origin": "actual",
+      "currency": "USD",
+      "event_id": "SYNTHETIC-read_file-0",
+      "task_id": "SYNTHETIC-waste",
+      "category": "tool",
+      "failed": false,
+      "source": "event"
+    },
+    {
+      "amount": "0.01",
+      "origin": "actual",
+      "currency": "USD",
+      "event_id": "SYNTHETIC-read_file-1",
+      "task_id": "SYNTHETIC-waste",
+      "category": "tool",
+      "failed": false,
+      "source": "event"
+    },
+    {
+      "amount": "0.01",
+      "origin": "actual",
+      "currency": "USD",
+      "event_id": "SYNTHETIC-read_file-2",
+      "task_id": "SYNTHETIC-waste",
+      "category": "tool",
+      "failed": false,
+      "source": "event"
+    },
+    {
+      "amount": "0.0408",
+      "currency": "USD",
+      "origin": "estimated",
+      "price_id": "SYNTHETIC-2026-v1",
+      "event_id": "SYNTHETIC-context-0",
+      "task_id": "SYNTHETIC-waste",
+      "category": "model",
+      "failed": false,
+      "source": "event"
+    },
+    {
+      "amount": "0.0408",
+      "currency": "USD",
+      "origin": "estimated",
+      "price_id": "SYNTHETIC-2026-v1",
+      "event_id": "SYNTHETIC-context-1",
+      "task_id": "SYNTHETIC-waste",
+      "category": "model",
+      "failed": false,
+      "source": "event"
+    },
+    {
+      "amount": "0.0408",
+      "currency": "USD",
+      "origin": "estimated",
+      "price_id": "SYNTHETIC-2026-v1",
+      "event_id": "SYNTHETIC-context-2",
+      "task_id": "SYNTHETIC-waste",
+      "category": "model",
+      "failed": false,
+      "source": "event"
+    },
+    {
+      "amount": "2",
+      "origin": "actual",
+      "currency": "USD",
+      "event_id": "SYNTHETIC-no-result",
+      "task_id": "SYNTHETIC-waste",
+      "category": "tool",
+      "failed": false,
+      "source": "event"
+    },
+    {
+      "amount": "0.50",
+      "origin": "manual",
+      "currency": "USD",
+      "event_id": "SYNTHETIC-quality",
+      "task_id": "SYNTHETIC-waste",
+      "category": "quality",
+      "failed": false,
+      "source": "event"
+    },
+    {
+      "amount": "0.003",
+      "currency": "USD",
+      "origin": "estimated",
+      "price_id": "SYNTHETIC-2026-v1",
+      "event_id": "SYNTHETIC-after-failure",
+      "task_id": "SYNTHETIC-waste",
+      "category": "model",
+      "failed": false,
+      "source": "event"
+    },
+    {
+      "event_id": "task-human-human_minutes",
+      "task_id": "SYNTHETIC-waste",
+      "category": "human",
+      "source": "task_metadata",
+      "origin": "manual",
+      "currency": "USD",
+      "amount": "9"
+    },
+    {
+      "event_id": "task-human-rework_minutes",
+      "task_id": "SYNTHETIC-waste",
+      "category": "rework",
+      "source": "task_metadata",
+      "origin": "manual",
+      "currency": "USD",
+      "amount": "18"
+    }
+  ],
+  "findings": [
+    {
+      "rule": "repeated_failure",
+      "severity": "review",
+      "conclusion": "suspected_inefficiency",
+      "task_id": "SYNTHETIC-waste",
+      "explanation": "At least three identical failed calls without declared retry justification.",
+      "recommendation": "Check the root error before another attempt.",
+      "evidence": [
+        {
+          "event_id": "SYNTHETIC-fail-0",
+          "source_line": 1,
+          "status": "failed",
+          "signature": "9da3665c441635479d337e2d5855951c5d0874190018cec1b760a5b25e62e91d"
+        },
+        {
+          "event_id": "SYNTHETIC-fail-1",
+          "source_line": 2,
+          "status": "failed",
+          "signature": "9da3665c441635479d337e2d5855951c5d0874190018cec1b760a5b25e62e91d"
+        },
+        {
+          "event_id": "SYNTHETIC-fail-2",
+          "source_line": 3,
+          "status": "failed",
+          "signature": "9da3665c441635479d337e2d5855951c5d0874190018cec1b760a5b25e62e91d"
+        }
+      ]
+    },
+    {
+      "rule": "repeated_call",
+      "severity": "review",
+      "conclusion": "suspected_inefficiency",
+      "task_id": "SYNTHETIC-waste",
+      "explanation": "Identical call fingerprint repeated; intent must be reviewed.",
+      "recommendation": "Check if repetition is required or cacheable.",
+      "evidence": [
+        {
+          "event_id": "SYNTHETIC-loop-0",
+          "source_line": 4,
+          "status": "success",
+          "signature": "67eeb727cb7770e9a4d0487ef79dd8a4eea827c259484f105fb525ac5ef89667"
+        },
+        {
+          "event_id": "SYNTHETIC-loop-2",
+          "source_line": 6,
+          "status": "success",
+          "signature": "67eeb727cb7770e9a4d0487ef79dd8a4eea827c259484f105fb525ac5ef89667"
+        },
+        {
+          "event_id": "SYNTHETIC-loop-4",
+          "source_line": 8,
+          "status": "success",
+          "signature": "67eeb727cb7770e9a4d0487ef79dd8a4eea827c259484f105fb525ac5ef89667"
+        }
+      ]
+    },
+    {
+      "rule": "repeated_call",
+      "severity": "review",
+      "conclusion": "suspected_inefficiency",
+      "task_id": "SYNTHETIC-waste",
+      "explanation": "Identical call fingerprint repeated; intent must be reviewed.",
+      "recommendation": "Check if repetition is required or cacheable.",
+      "evidence": [
+        {
+          "event_id": "SYNTHETIC-loop-1",
+          "source_line": 5,
+          "status": "success",
+          "signature": "ec5305bf76ac63dedebdfef748eb262e1399f9d922da1e1fc0eba6a0a2b54af9"
+        },
+        {
+          "event_id": "SYNTHETIC-loop-3",
+          "source_line": 7,
+          "status": "success",
+          "signature": "ec5305bf76ac63dedebdfef748eb262e1399f9d922da1e1fc0eba6a0a2b54af9"
+        },
+        {
+          "event_id": "SYNTHETIC-loop-5",
+          "source_line": 9,
+          "status": "success",
+          "signature": "ec5305bf76ac63dedebdfef748eb262e1399f9d922da1e1fc0eba6a0a2b54af9"
+        }
+      ]
+    },
+    {
+      "rule": "unverified_rework",
+      "severity": "review",
+      "conclusion": "suspected_inefficiency",
+      "task_id": "SYNTHETIC-waste",
+      "explanation": "Repeated edits explicitly report no verifiable progress.",
+      "recommendation": "Add an acceptance check and inspect the failing change.",
+      "evidence": [
+        {
+          "event_id": "SYNTHETIC-edit_file-0",
+          "source_line": 10,
+          "status": "success",
+          "signature": "65a086677eefaf4ad2fce63e0f7f5d4601317e54856a8a8734218f406ae9b016"
+        },
+        {
+          "event_id": "SYNTHETIC-edit_file-1",
+          "source_line": 11,
+          "status": "success",
+          "signature": "65a086677eefaf4ad2fce63e0f7f5d4601317e54856a8a8734218f406ae9b016"
+        },
+        {
+          "event_id": "SYNTHETIC-edit_file-2",
+          "source_line": 12,
+          "status": "success",
+          "signature": "65a086677eefaf4ad2fce63e0f7f5d4601317e54856a8a8734218f406ae9b016"
+        }
+      ]
+    },
+    {
+      "rule": "repeated_read",
+      "severity": "review",
+      "conclusion": "suspected_inefficiency",
+      "task_id": "SYNTHETIC-waste",
+      "explanation": "Repeated reads; file changes and intended verification are not known.",
+      "recommendation": "Review file changes; reuse results when valid.",
+      "evidence": [
+        {
+          "event_id": "SYNTHETIC-read_file-0",
+          "source_line": 13,
+          "status": "success",
+          "signature": "5534f323801fd618025433a5b6c2830ee4dfd6ad5a6d96596656f39237e00060"
+        },
+        {
+          "event_id": "SYNTHETIC-read_file-1",
+          "source_line": 14,
+          "status": "success",
+          "signature": "5534f323801fd618025433a5b6c2830ee4dfd6ad5a6d96596656f39237e00060"
+        },
+        {
+          "event_id": "SYNTHETIC-read_file-2",
+          "source_line": 15,
+          "status": "success",
+          "signature": "5534f323801fd618025433a5b6c2830ee4dfd6ad5a6d96596656f39237e00060"
+        }
+      ]
+    },
+    {
+      "rule": "cost_without_progress",
+      "severity": "review",
+      "conclusion": "suspected_inefficiency",
+      "task_id": "SYNTHETIC-waste",
+      "explanation": "Reported charge >= 1 original currency unit with explicitly absent progress; threshold is heuristic.",
+      "recommendation": "Review whether the cost produced a reusable result before repeating.",
+      "evidence": [
+        {
+          "event_id": "SYNTHETIC-no-result",
+          "source_line": 19,
+          "status": "success",
+          "signature": null
+        }
+      ]
+    },
+    {
+      "rule": "alternating_loop",
+      "severity": "review",
+      "conclusion": "suspected_inefficiency",
+      "task_id": "SYNTHETIC-waste",
+      "explanation": "A/B sequence repeated three times without declared progress.",
+      "recommendation": "Stop and inspect the loop termination condition.",
+      "evidence": [
+        {
+          "event_id": "SYNTHETIC-loop-0",
+          "source_line": 4,
+          "status": "success",
+          "signature": "67eeb727cb7770e9a4d0487ef79dd8a4eea827c259484f105fb525ac5ef89667"
+        },
+        {
+          "event_id": "SYNTHETIC-loop-1",
+          "source_line": 5,
+          "status": "success",
+          "signature": "ec5305bf76ac63dedebdfef748eb262e1399f9d922da1e1fc0eba6a0a2b54af9"
+        },
+        {
+          "event_id": "SYNTHETIC-loop-2",
+          "source_line": 6,
+          "status": "success",
+          "signature": "67eeb727cb7770e9a4d0487ef79dd8a4eea827c259484f105fb525ac5ef89667"
+        },
+        {
+          "event_id": "SYNTHETIC-loop-3",
+          "source_line": 7,
+          "status": "success",
+          "signature": "ec5305bf76ac63dedebdfef748eb262e1399f9d922da1e1fc0eba6a0a2b54af9"
+        },
+        {
+          "event_id": "SYNTHETIC-loop-4",
+          "source_line": 8,
+          "status": "success",
+          "signature": "67eeb727cb7770e9a4d0487ef79dd8a4eea827c259484f105fb525ac5ef89667"
+        },
+        {
+          "event_id": "SYNTHETIC-loop-5",
+          "source_line": 9,
+          "status": "success",
+          "signature": "ec5305bf76ac63dedebdfef748eb262e1399f9d922da1e1fc0eba6a0a2b54af9"
+        }
+      ]
+    },
+    {
+      "rule": "cost_after_failure",
+      "severity": "review",
+      "conclusion": "suspected_inefficiency",
+      "task_id": "SYNTHETIC-waste",
+      "explanation": "Cost-bearing event after an explicit failed-task marker.",
+      "recommendation": "Confirm whether the task was deliberately reopened.",
+      "evidence": [
+        {
+          "event_id": "SYNTHETIC-failed-task",
+          "source_line": 22,
+          "status": "failed",
+          "signature": null
+        },
+        {
+          "event_id": "SYNTHETIC-after-failure",
+          "source_line": 23,
+          "status": "success",
+          "signature": null
+        }
+      ]
+    },
+    {
+      "rule": "context_reload",
+      "severity": "review",
+      "conclusion": "suspected_inefficiency",
+      "task_id": "SYNTHETIC-waste",
+      "explanation": "Repeated large context fingerprint; caching/intent require review.",
+      "recommendation": "Review context reuse and cache effectiveness.",
+      "evidence": [
+        {
+          "event_id": "SYNTHETIC-context-0",
+          "source_line": 16,
+          "status": "success",
+          "signature": null
+        },
+        {
+          "event_id": "SYNTHETIC-context-1",
+          "source_line": 17,
+          "status": "success",
+          "signature": null
+        },
+        {
+          "event_id": "SYNTHETIC-context-2",
+          "source_line": 18,
+          "status": "success",
+          "signature": null
+        }
+      ]
+    }
+  ],
+  "coverage": {
+    "events": 23,
+    "tasks": 1,
+    "unknown_cost_items": 0,
+    "warnings": [],
+    "scope": "specified files only; unobserved costs cannot be inferred"
+  },
+  "timeline": [
+    {
+      "id": "SYNTHETIC-fail-0",
+      "task_id": "SYNTHETIC-waste",
+      "timestamp": "2026-10-01T09:00:00Z",
+      "kind": "tool",
+      "status": "failed"
+    },
+    {
+      "id": "SYNTHETIC-fail-1",
+      "task_id": "SYNTHETIC-waste",
+      "timestamp": "2026-10-01T09:00:01Z",
+      "kind": "tool",
+      "status": "failed"
+    },
+    {
+      "id": "SYNTHETIC-fail-2",
+      "task_id": "SYNTHETIC-waste",
+      "timestamp": "2026-10-01T09:00:02Z",
+      "kind": "tool",
+      "status": "failed"
+    },
+    {
+      "id": "SYNTHETIC-loop-0",
+      "task_id": "SYNTHETIC-waste",
+      "timestamp": "2026-10-01T09:00:05Z",
+      "kind": "tool",
+      "status": "success"
+    },
+    {
+      "id": "SYNTHETIC-loop-1",
+      "task_id": "SYNTHETIC-waste",
+      "timestamp": "2026-10-01T09:00:06Z",
+      "kind": "tool",
+      "status": "success"
+    },
+    {
+      "id": "SYNTHETIC-loop-2",
+      "task_id": "SYNTHETIC-waste",
+      "timestamp": "2026-10-01T09:00:07Z",
+      "kind": "tool",
+      "status": "success"
+    },
+    {
+      "id": "SYNTHETIC-loop-3",
+      "task_id": "SYNTHETIC-waste",
+      "timestamp": "2026-10-01T09:00:08Z",
+      "kind": "tool",
+      "status": "success"
+    },
+    {
+      "id": "SYNTHETIC-loop-4",
+      "task_id": "SYNTHETIC-waste",
+      "timestamp": "2026-10-01T09:00:09Z",
+      "kind": "tool",
+      "status": "success"
+    },
+    {
+      "id": "SYNTHETIC-loop-5",
+      "task_id": "SYNTHETIC-waste",
+      "timestamp": "2026-10-01T09:00:10Z",
+      "kind": "tool",
+      "status": "success"
+    },
+    {
+      "id": "SYNTHETIC-edit_file-0",
+      "task_id": "SYNTHETIC-waste",
+      "timestamp": "2026-10-01T09:00:12Z",
+      "kind": "tool",
+      "status": "success"
+    },
+    {
+      "id": "SYNTHETIC-edit_file-1",
+      "task_id": "SYNTHETIC-waste",
+      "timestamp": "2026-10-01T09:00:13Z",
+      "kind": "tool",
+      "status": "success"
+    },
+    {
+      "id": "SYNTHETIC-edit_file-2",
+      "task_id": "SYNTHETIC-waste",
+      "timestamp": "2026-10-01T09:00:14Z",
+      "kind": "tool",
+      "status": "success"
+    },
+    {
+      "id": "SYNTHETIC-read_file-0",
+      "task_id": "SYNTHETIC-waste",
+      "timestamp": "2026-10-01T09:00:16Z",
+      "kind": "tool",
+      "status": "success"
+    },
+    {
+      "id": "SYNTHETIC-read_file-1",
+      "task_id": "SYNTHETIC-waste",
+      "timestamp": "2026-10-01T09:00:17Z",
+      "kind": "tool",
+      "status": "success"
+    },
+    {
+      "id": "SYNTHETIC-read_file-2",
+      "task_id": "SYNTHETIC-waste",
+      "timestamp": "2026-10-01T09:00:18Z",
+      "kind": "tool",
+      "status": "success"
+    },
+    {
+      "id": "SYNTHETIC-context-0",
+      "task_id": "SYNTHETIC-waste",
+      "timestamp": "2026-10-01T09:00:20Z",
+      "kind": "model",
+      "status": "success"
+    },
+    {
+      "id": "SYNTHETIC-context-1",
+      "task_id": "SYNTHETIC-waste",
+      "timestamp": "2026-10-01T09:00:21Z",
+      "kind": "model",
+      "status": "success"
+    },
+    {
+      "id": "SYNTHETIC-context-2",
+      "task_id": "SYNTHETIC-waste",
+      "timestamp": "2026-10-01T09:00:22Z",
+      "kind": "model",
+      "status": "success"
+    },
+    {
+      "id": "SYNTHETIC-no-result",
+      "task_id": "SYNTHETIC-waste",
+      "timestamp": "2026-10-01T09:00:24Z",
+      "kind": "tool",
+      "status": "success"
+    },
+    {
+      "id": "SYNTHETIC-quality",
+      "task_id": "SYNTHETIC-waste",
+      "timestamp": "2026-10-01T09:00:25Z",
+      "kind": "tool",
+      "status": "success"
+    },
+    {
+      "id": "SYNTHETIC-wait",
+      "task_id": "SYNTHETIC-waste",
+      "timestamp": "2026-10-01T09:00:26Z",
+      "kind": "wait",
+      "status": "success"
+    },
+    {
+      "id": "SYNTHETIC-failed-task",
+      "task_id": "SYNTHETIC-waste",
+      "timestamp": "2026-10-01T09:00:30Z",
+      "kind": "task",
+      "status": "failed"
+    },
+    {
+      "id": "SYNTHETIC-after-failure",
+      "task_id": "SYNTHETIC-waste",
+      "timestamp": "2026-10-01T09:00:35Z",
+      "kind": "model",
+      "status": "success"
+    }
+  ],
+  "trend": [
+    {
+      "date_utc": "2026-10-01",
+      "totals": {
+        "USD": {
+          "actual": "2.42",
+          "estimated": "0.1254",
+          "manual": "0.50"
+        }
+      }
+    }
+  ],
+  "high_cost_steps": [
+    {
+      "amount": "2",
+      "origin": "actual",
+      "currency": "USD",
+      "event_id": "SYNTHETIC-no-result",
+      "task_id": "SYNTHETIC-waste",
+      "category": "tool",
+      "failed": false,
+      "source": "event"
+    },
+    {
+      "amount": "0.50",
+      "origin": "manual",
+      "currency": "USD",
+      "event_id": "SYNTHETIC-quality",
+      "task_id": "SYNTHETIC-waste",
+      "category": "quality",
+      "failed": false,
+      "source": "event"
+    },
+    {
+      "amount": "0.05",
+      "origin": "actual",
+      "currency": "USD",
+      "event_id": "SYNTHETIC-fail-0",
+      "task_id": "SYNTHETIC-waste",
+      "category": "tool",
+      "failed": true,
+      "source": "event"
+    },
+    {
+      "amount": "0.05",
+      "origin": "actual",
+      "currency": "USD",
+      "event_id": "SYNTHETIC-fail-1",
+      "task_id": "SYNTHETIC-waste",
+      "category": "tool",
+      "failed": true,
+      "source": "event"
+    },
+    {
+      "amount": "0.05",
+      "origin": "actual",
+      "currency": "USD",
+      "event_id": "SYNTHETIC-fail-2",
+      "task_id": "SYNTHETIC-waste",
+      "category": "tool",
+      "failed": true,
+      "source": "event"
+    },
+    {
+      "amount": "0.0408",
+      "currency": "USD",
+      "origin": "estimated",
+      "price_id": "SYNTHETIC-2026-v1",
+      "event_id": "SYNTHETIC-context-0",
+      "task_id": "SYNTHETIC-waste",
+      "category": "model",
+      "failed": false,
+      "source": "event"
+    },
+    {
+      "amount": "0.0408",
+      "currency": "USD",
+      "origin": "estimated",
+      "price_id": "SYNTHETIC-2026-v1",
+      "event_id": "SYNTHETIC-context-1",
+      "task_id": "SYNTHETIC-waste",
+      "category": "model",
+      "failed": false,
+      "source": "event"
+    },
+    {
+      "amount": "0.0408",
+      "currency": "USD",
+      "origin": "estimated",
+      "price_id": "SYNTHETIC-2026-v1",
+      "event_id": "SYNTHETIC-context-2",
+      "task_id": "SYNTHETIC-waste",
+      "category": "model",
+      "failed": false,
+      "source": "event"
+    },
+    {
+      "amount": "0.04",
+      "origin": "actual",
+      "currency": "USD",
+      "event_id": "SYNTHETIC-edit_file-0",
+      "task_id": "SYNTHETIC-waste",
+      "category": "rework",
+      "failed": false,
+      "source": "event"
+    },
+    {
+      "amount": "0.04",
+      "origin": "actual",
+      "currency": "USD",
+      "event_id": "SYNTHETIC-edit_file-1",
+      "task_id": "SYNTHETIC-waste",
+      "category": "rework",
+      "failed": false,
+      "source": "event"
+    },
+    {
+      "amount": "0.04",
+      "origin": "actual",
+      "currency": "USD",
+      "event_id": "SYNTHETIC-edit_file-2",
+      "task_id": "SYNTHETIC-waste",
+      "category": "rework",
+      "failed": false,
+      "source": "event"
+    },
+    {
+      "amount": "0.02",
+      "origin": "actual",
+      "currency": "USD",
+      "event_id": "SYNTHETIC-loop-0",
+      "task_id": "SYNTHETIC-waste",
+      "category": "tool",
+      "failed": false,
+      "source": "event"
+    },
+    {
+      "amount": "0.02",
+      "origin": "actual",
+      "currency": "USD",
+      "event_id": "SYNTHETIC-loop-1",
+      "task_id": "SYNTHETIC-waste",
+      "category": "tool",
+      "failed": false,
+      "source": "event"
+    },
+    {
+      "amount": "0.02",
+      "origin": "actual",
+      "currency": "USD",
+      "event_id": "SYNTHETIC-loop-2",
+      "task_id": "SYNTHETIC-waste",
+      "category": "tool",
+      "failed": false,
+      "source": "event"
+    },
+    {
+      "amount": "0.02",
+      "origin": "actual",
+      "currency": "USD",
+      "event_id": "SYNTHETIC-loop-3",
+      "task_id": "SYNTHETIC-waste",
+      "category": "tool",
+      "failed": false,
+      "source": "event"
+    },
+    {
+      "amount": "0.02",
+      "origin": "actual",
+      "currency": "USD",
+      "event_id": "SYNTHETIC-loop-4",
+      "task_id": "SYNTHETIC-waste",
+      "category": "tool",
+      "failed": false,
+      "source": "event"
+    },
+    {
+      "amount": "0.02",
+      "origin": "actual",
+      "currency": "USD",
+      "event_id": "SYNTHETIC-loop-5",
+      "task_id": "SYNTHETIC-waste",
+      "category": "tool",
+      "failed": false,
+      "source": "event"
+    },
+    {
+      "amount": "0.01",
+      "origin": "actual",
+      "currency": "USD",
+      "event_id": "SYNTHETIC-read_file-0",
+      "task_id": "SYNTHETIC-waste",
+      "category": "tool",
+      "failed": false,
+      "source": "event"
+    },
+    {
+      "amount": "0.01",
+      "origin": "actual",
+      "currency": "USD",
+      "event_id": "SYNTHETIC-read_file-1",
+      "task_id": "SYNTHETIC-waste",
+      "category": "tool",
+      "failed": false,
+      "source": "event"
+    },
+    {
+      "amount": "0.01",
+      "origin": "actual",
+      "currency": "USD",
+      "event_id": "SYNTHETIC-read_file-2",
+      "task_id": "SYNTHETIC-waste",
+      "category": "tool",
+      "failed": false,
+      "source": "event"
+    }
+  ],
+  "successful_tasks": 0,
+  "average_cost_per_success": null,
+  "average_cost_definition": "all observed task costs including failures / accepted successes; partial scope; currencies kept separate"
+}

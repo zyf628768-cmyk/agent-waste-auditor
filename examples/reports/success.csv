@@ -1,0 +1,5 @@
+task_id,event_id,category,amount,currency,origin,price_id
+SYNTHETIC-success,SYNTHETIC-s-model,model,0.3,USD,estimated,SYNTHETIC-2026-v1
+SYNTHETIC-success,SYNTHETIC-s-tool,tool,0.02,USD,actual,
+SYNTHETIC-success,task-human-human_minutes,human,6,USD,manual,
+SYNTHETIC-success,task-human-rework_minutes,rework,0,USD,manual,

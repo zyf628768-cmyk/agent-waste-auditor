@@ -1,0 +1,1 @@
+{"object": "response", "id": "SYNTHETIC-native-openai", "created_at": 1790812800, "status": "completed", "model": "SYNTHETIC-model", "usage": {"input_tokens": 1000, "output_tokens": 200, "input_tokens_details": {"cached_tokens": 400}}}

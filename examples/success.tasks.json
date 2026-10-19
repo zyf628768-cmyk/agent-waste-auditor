@@ -1,0 +1,18 @@
+[
+  {
+    "task_id": "SYNTHETIC-success",
+    "agent": "codex",
+    "task_key": "SYNTHETIC-fix-parser",
+    "difficulty": "easy",
+    "acceptance_id": "SYNTHETIC-parser-tests-v1",
+    "status": "success",
+    "accepted": true,
+    "baseline_minutes": "60",
+    "baseline_verified": false,
+    "human_minutes": "10",
+    "rework_minutes": "0",
+    "hourly_rate": "36",
+    "currency": "USD",
+    "synthetic": true
+  }
+]

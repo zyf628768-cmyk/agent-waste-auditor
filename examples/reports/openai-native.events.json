@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "source_format": "openai",
+  "profile": "openai-completed-objects-v1",
+  "source_records": 1,
+  "events": [
+    {
+      "schema_version": "1.0",
+      "id": "SYNTHETIC-native-openai",
+      "task_id": "SYNTHETIC-native-openai",
+      "agent": "openai-api",
+      "timestamp": "2026-10-01T00:00:00+00:00",
+      "kind": "model",
+      "model": "SYNTHETIC-model",
+      "source_line": 1,
+      "status": "success",
+      "input_tokens": 1000,
+      "output_tokens": 200,
+      "cached_tokens": 400
+    }
+  ],
+  "tasks": [],
+  "warnings": []
+}

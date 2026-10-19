@@ -1,0 +1,86 @@
+{
+  "installed_wheel": "agent_waste_auditor-0.1.0-py3-none-any.whl",
+  "isolated_target_import": true,
+  "console_entrypoint": "bin/agentwaste.exe",
+  "passed_commands": 13,
+  "results": [
+    {
+      "command": "agentwaste --version",
+      "exit_code": 0,
+      "stdout": "0.1.0\n",
+      "stderr": ""
+    },
+    {
+      "command": "agentwaste import PROJECT\\examples\\success.jsonl --tasks PROJECT\\examples\\success.tasks.json -o TEMP_OUTPUT\\events.json",
+      "exit_code": 0,
+      "stdout": "Written import result\n",
+      "stderr": ""
+    },
+    {
+      "command": "agentwaste analyze TEMP_OUTPUT\\events.json --pricing PROJECT\\examples\\pricing.json -o TEMP_OUTPUT\\audit.json",
+      "exit_code": 0,
+      "stdout": "Written analyze result\n",
+      "stderr": ""
+    },
+    {
+      "command": "agentwaste compare TEMP_OUTPUT\\events.json --pricing PROJECT\\examples\\pricing.json -o TEMP_OUTPUT\\compare.json",
+      "exit_code": 0,
+      "stdout": "Written compare result\n",
+      "stderr": ""
+    },
+    {
+      "command": "agentwaste report TEMP_OUTPUT\\audit.json -o TEMP_OUTPUT\\audit.html",
+      "exit_code": 0,
+      "stdout": "Report written\n",
+      "stderr": ""
+    },
+    {
+      "command": "agentwaste pricing PROJECT\\examples\\pricing.json",
+      "exit_code": 0,
+      "stdout": "{\n  \"schema_version\": \"1.0\",\n  \"prices\": [\n    {\n      \"id\": \"SYNTHETIC-2026-v1\",\n      \"model\": \"SYNTHETIC-model\",\n      \"currency\": \"USD\",\n      \"source\": \"SYNTHETIC TEST PRICES; NOT A PROVIDER QUOTE\",\n      \"effective_from\": \"2026-01-01\",\n      \"effective_to\": \"2026-12-31\",\n      \"input_per_million\": \"2\",\n      \"output_per_million\": \"8\",\n      \"cache_read_per_million\": \"0.5\",\n      \"cache_write_per_million\": \"3\"\n    }\n  ],\n  \"notice\": \"No bundled commercial model prices; explicit provenance and date windows required.\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": "agentwaste doctor --input PROJECT\\examples\\success.jsonl --pricing PROJECT\\examples\\pricing.json",
+      "exit_code": 0,
+      "stdout": "{\n  \"read_only\": true,\n  \"ok\": true,\n  \"checks\": [\n    {\n      \"check\": \"python_3_11\",\n      \"ok\": true,\n      \"detail\": \"3.12.14\"\n    },\n    {\n      \"check\": \"runtime_dependencies\",\n      \"ok\": true,\n      \"detail\": \"standard library only\"\n    },\n    {\n      \"check\": \"jsonschema_optional\",\n      \"ok\": true,\n      \"available\": false\n    },\n    {\n      \"check\": \"pricing\",\n      \"ok\": true,\n      \"entries\": 1\n    },\n    {\n      \"check\": \"log_compatibility\",\n      \"ok\": true,\n      \"profile\": \"agentwaste-1.0\",\n      \"warnings\": []\n    }\n  ]\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": "agentwaste import --help",
+      "exit_code": 0,
+      "stdout": "usage: agentwaste import [-h] [--format {jsonl,csv,codex,claude,openai}]\n                         [--tasks TASKS] -o OUTPUT\n                         input\n\npositional arguments:\n  input\n\noptions:\n  -h, --help            show this help message and exit\n  --format {jsonl,csv,codex,claude,openai}\n  --tasks TASKS         JSON array of user-entered task economics\n  -o OUTPUT, --output OUTPUT\n",
+      "stderr": ""
+    },
+    {
+      "command": "agentwaste analyze --help",
+      "exit_code": 0,
+      "stdout": "usage: agentwaste analyze [-h] [--pricing PRICING] -o OUTPUT input\n\npositional arguments:\n  input\n\noptions:\n  -h, --help            show this help message and exit\n  --pricing PRICING\n  -o OUTPUT, --output OUTPUT\n",
+      "stderr": ""
+    },
+    {
+      "command": "agentwaste compare --help",
+      "exit_code": 0,
+      "stdout": "usage: agentwaste compare [-h] [--pricing PRICING]\n                          [--by {agent,model,prompt_strategy,workflow}] -o\n                          OUTPUT\n                          inputs [inputs ...]\n\npositional arguments:\n  inputs\n\noptions:\n  -h, --help            show this help message and exit\n  --pricing PRICING\n  --by {agent,model,prompt_strategy,workflow}\n  -o OUTPUT, --output OUTPUT\n",
+      "stderr": ""
+    },
+    {
+      "command": "agentwaste report --help",
+      "exit_code": 0,
+      "stdout": "usage: agentwaste report [-h] [--format {json,csv,markdown,html}] -o OUTPUT\n                         input\n\npositional arguments:\n  input\n\noptions:\n  -h, --help            show this help message and exit\n  --format {json,csv,markdown,html}\n  -o OUTPUT, --output OUTPUT\n",
+      "stderr": ""
+    },
+    {
+      "command": "agentwaste pricing --help",
+      "exit_code": 0,
+      "stdout": "usage: agentwaste pricing [-h] [input]\n\npositional arguments:\n  input\n\noptions:\n  -h, --help  show this help message and exit\n",
+      "stderr": ""
+    },
+    {
+      "command": "agentwaste doctor --help",
+      "exit_code": 0,
+      "stdout": "usage: agentwaste doctor [-h] [--input INPUT]\n                         [--format {jsonl,csv,codex,claude,openai}]\n                         [--pricing PRICING]\n\noptions:\n  -h, --help            show this help message and exit\n  --input INPUT\n  --format {jsonl,csv,codex,claude,openai}\n  --pricing PRICING\n",
+      "stderr": ""
+    }
+  ]
+}

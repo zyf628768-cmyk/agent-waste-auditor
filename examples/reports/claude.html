@@ -1,0 +1,146 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'"><title>AgentWaste — SYNTHETIC</title><style>body{font:16px system-ui;max-width:1100px;margin:40px auto;padding:0 20px;background:#101827;color:#e6edf3}h1{color:#6ce5bc}summary{cursor:pointer;font-weight:bold;padding:16px 0}pre{white-space:pre-wrap;overflow-wrap:anywhere;border:1px solid #3b4c60;padding:18px;border-radius:8px}p{line-height:1.6}</style></head><body><h1>AgentWaste — SYNTHETIC</h1><p>Find the Hidden Cost of AI Work.</p><p>Currency and provenance stay separate. Unknown is not zero. Heuristics require review. Duration is not automatically labor cost.</p><h2>Cost composition · USD</h2><p>actual: 0.04</p><div style="height:18px;background:#6ce5bc;width:0.3333333333333333%"></div><p>estimated: 0.61</p><div style="height:18px;background:#6ce5bc;width:5.083333333333333%"></div><p>manual: 12</p><div style="height:18px;background:#6ce5bc;width:100%"></div><h2>Daily observed cost · USD (UTC)</h2><p>2026-10-01: 0.65</p><div style="height:12px;background:#89b4fa;width:100%"></div><style>table{border-collapse:collapse;width:100%;font-size:14px}td,th{padding:12px;border:1px solid #3b4c60;text-align:left;vertical-align:top;overflow-wrap:anywhere}th{color:#6ce5bc}h2{margin-top:36px}</style><h2>Tasks, acceptance and observed cost</h2><div style="overflow:auto"><table><thead><tr><th>Task / Agent</th><th>Outcome / acceptance</th><th>Cost by origin</th><th>Unknown costs</th><th>Human + rework min</th><th>Observed elapsed s</th><th>ROI status</th></tr></thead><tbody><tr><td>SYNTHETIC-claude / claude-code</td><td>success / True</td><td>USD actual=0.04, estimated=0.61, manual=12</td><td>0</td><td>20 + 0</td><td>22.0</td><td>scenario_estimate</td></tr></tbody></table></div><h2>High-cost steps (per original currency)</h2><div style="overflow:auto"><table><thead><tr><th>Event</th><th>Category</th><th>Amount</th><th>Currency</th><th>Origin</th></tr></thead><tbody><tr><td>SYNTHETIC-c-model</td><td>model</td><td>0.61</td><td>USD</td><td>estimated</td></tr><tr><td>SYNTHETIC-c-tool</td><td>tool</td><td>0.04</td><td>USD</td><td>actual</td></tr></tbody></table></div><h2>Failure and retry timeline</h2><div style="overflow:auto"><table><thead><tr><th>Time</th><th>Event</th><th>Task</th><th>Kind</th><th>Status</th></tr></thead><tbody><tr><td>2026-10-01T09:00:00Z</td><td>SYNTHETIC-c-model</td><td>SYNTHETIC-claude</td><td>model</td><td>success</td></tr><tr><td>2026-10-01T09:00:10Z</td><td>SYNTHETIC-c-tool</td><td>SYNTHETIC-claude</td><td>tool</td><td>success</td></tr><tr><td>2026-10-01T09:00:22Z</td><td>SYNTHETIC-c-end</td><td>SYNTHETIC-claude</td><td>task</td><td>success</td></tr></tbody></table></div><details><summary>Structured evidence: Totals</summary><pre>{
+  &quot;USD&quot;: {
+    &quot;actual&quot;: &quot;0.04&quot;,
+    &quot;estimated&quot;: &quot;0.61&quot;,
+    &quot;manual&quot;: &quot;12&quot;
+  }
+}</pre></details><details><summary>Structured evidence: Coverage</summary><pre>{
+  &quot;events&quot;: 3,
+  &quot;tasks&quot;: 1,
+  &quot;unknown_cost_items&quot;: 0,
+  &quot;warnings&quot;: [],
+  &quot;scope&quot;: &quot;specified files only; unobserved costs cannot be inferred&quot;
+}</pre></details><details><summary>Structured evidence: Tasks</summary><pre>[
+  {
+    &quot;task_id&quot;: &quot;SYNTHETIC-claude&quot;,
+    &quot;agent&quot;: &quot;claude-code&quot;,
+    &quot;task_key&quot;: &quot;SYNTHETIC-fix-parser&quot;,
+    &quot;difficulty&quot;: &quot;easy&quot;,
+    &quot;acceptance_id&quot;: &quot;SYNTHETIC-parser-tests-v1&quot;,
+    &quot;model&quot;: &quot;SYNTHETIC-model&quot;,
+    &quot;prompt_strategy&quot;: null,
+    &quot;workflow&quot;: null,
+    &quot;status&quot;: &quot;success&quot;,
+    &quot;accepted&quot;: true,
+    &quot;synthetic&quot;: true,
+    &quot;human_minutes&quot;: &quot;20&quot;,
+    &quot;rework_minutes&quot;: &quot;0&quot;,
+    &quot;totals&quot;: {
+      &quot;USD&quot;: {
+        &quot;actual&quot;: &quot;0.04&quot;,
+        &quot;estimated&quot;: &quot;0.61&quot;,
+        &quot;manual&quot;: &quot;12&quot;
+      }
+    },
+    &quot;category_totals&quot;: {
+      &quot;human&quot;: {
+        &quot;USD&quot;: {
+          &quot;actual&quot;: &quot;0&quot;,
+          &quot;estimated&quot;: &quot;0&quot;,
+          &quot;manual&quot;: &quot;12&quot;
+        }
+      },
+      &quot;model&quot;: {
+        &quot;USD&quot;: {
+          &quot;actual&quot;: &quot;0&quot;,
+          &quot;estimated&quot;: &quot;0.61&quot;,
+          &quot;manual&quot;: &quot;0&quot;
+        }
+      },
+      &quot;rework&quot;: {
+        &quot;USD&quot;: {
+          &quot;actual&quot;: &quot;0&quot;,
+          &quot;estimated&quot;: &quot;0&quot;,
+          &quot;manual&quot;: &quot;0&quot;
+        }
+      },
+      &quot;tool&quot;: {
+        &quot;USD&quot;: {
+          &quot;actual&quot;: &quot;0.04&quot;,
+          &quot;estimated&quot;: &quot;0&quot;,
+          &quot;manual&quot;: &quot;0&quot;
+        }
+      }
+    },
+    &quot;failed_step_costs&quot;: {},
+    &quot;unknown_costs&quot;: [],
+    &quot;cost_coverage&quot;: {
+      &quot;known_events&quot;: 2,
+      &quot;cost_bearing_events&quot;: 2,
+      &quot;complete&quot;: true
+    },
+    &quot;elapsed_seconds&quot;: &quot;22.0&quot;,
+    &quot;duration_sum_ms&quot;: 0,
+    &quot;queue_ms&quot;: 0,
+    &quot;human_wait_ms&quot;: 0,
+    &quot;rework_events&quot;: 0,
+    &quot;roi&quot;: {
+      &quot;status&quot;: &quot;scenario_estimate&quot;,
+      &quot;currency&quot;: &quot;USD&quot;,
+      &quot;baseline_cost&quot;: &quot;36&quot;,
+      &quot;total_cost&quot;: &quot;12.65&quot;,
+      &quot;net_savings&quot;: &quot;23.35&quot;,
+      &quot;roi&quot;: &quot;1.845849802371541501976284585&quot;,
+      &quot;assumptions&quot;: [
+        &quot;user-entered baseline and human effort&quot;,
+        &quot;rework minutes exclude other human minutes&quot;,
+        &quot;ROI = (baseline - task cost) / task cost; zero cost has undefined ROI&quot;
+      ]
+    }
+  }
+]</pre></details><details><summary>Structured evidence: Findings</summary><pre>[]</pre></details><details><summary>Structured evidence: High Cost Steps</summary><pre>[
+  {
+    &quot;amount&quot;: &quot;0.61&quot;,
+    &quot;currency&quot;: &quot;USD&quot;,
+    &quot;origin&quot;: &quot;estimated&quot;,
+    &quot;price_id&quot;: &quot;SYNTHETIC-2026-v1&quot;,
+    &quot;event_id&quot;: &quot;SYNTHETIC-c-model&quot;,
+    &quot;task_id&quot;: &quot;SYNTHETIC-claude&quot;,
+    &quot;category&quot;: &quot;model&quot;,
+    &quot;failed&quot;: false,
+    &quot;source&quot;: &quot;event&quot;
+  },
+  {
+    &quot;amount&quot;: &quot;0.04&quot;,
+    &quot;origin&quot;: &quot;actual&quot;,
+    &quot;currency&quot;: &quot;USD&quot;,
+    &quot;event_id&quot;: &quot;SYNTHETIC-c-tool&quot;,
+    &quot;task_id&quot;: &quot;SYNTHETIC-claude&quot;,
+    &quot;category&quot;: &quot;tool&quot;,
+    &quot;failed&quot;: false,
+    &quot;source&quot;: &quot;event&quot;
+  }
+]</pre></details><details><summary>Structured evidence: Trend</summary><pre>[
+  {
+    &quot;date_utc&quot;: &quot;2026-10-01&quot;,
+    &quot;totals&quot;: {
+      &quot;USD&quot;: {
+        &quot;actual&quot;: &quot;0.04&quot;,
+        &quot;estimated&quot;: &quot;0.61&quot;,
+        &quot;manual&quot;: &quot;0&quot;
+      }
+    }
+  }
+]</pre></details><details><summary>Structured evidence: Timeline</summary><pre>[
+  {
+    &quot;id&quot;: &quot;SYNTHETIC-c-model&quot;,
+    &quot;task_id&quot;: &quot;SYNTHETIC-claude&quot;,
+    &quot;timestamp&quot;: &quot;2026-10-01T09:00:00Z&quot;,
+    &quot;kind&quot;: &quot;model&quot;,
+    &quot;status&quot;: &quot;success&quot;
+  },
+  {
+    &quot;id&quot;: &quot;SYNTHETIC-c-tool&quot;,
+    &quot;task_id&quot;: &quot;SYNTHETIC-claude&quot;,
+    &quot;timestamp&quot;: &quot;2026-10-01T09:00:10Z&quot;,
+    &quot;kind&quot;: &quot;tool&quot;,
+    &quot;status&quot;: &quot;success&quot;
+  },
+  {
+    &quot;id&quot;: &quot;SYNTHETIC-c-end&quot;,
+    &quot;task_id&quot;: &quot;SYNTHETIC-claude&quot;,
+    &quot;timestamp&quot;: &quot;2026-10-01T09:00:22Z&quot;,
+    &quot;kind&quot;: &quot;task&quot;,
+    &quot;status&quot;: &quot;success&quot;
+  }
+]</pre></details></body></html>

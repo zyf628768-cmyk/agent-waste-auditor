@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "prices": [
+    {
+      "id": "SYNTHETIC-2026-v1",
+      "model": "SYNTHETIC-model",
+      "currency": "USD",
+      "source": "SYNTHETIC TEST PRICES; NOT A PROVIDER QUOTE",
+      "effective_from": "2026-01-01",
+      "effective_to": "2026-12-31",
+      "input_per_million": "2",
+      "output_per_million": "8",
+      "cache_read_per_million": "0.5",
+      "cache_write_per_million": "3"
+    }
+  ]
+}

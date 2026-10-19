@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.0",
+  "source_format": "jsonl",
+  "profile": "agentwaste-1.0",
+  "source_records": 3,
+  "events": [
+    {
+      "schema_version": "1.0",
+      "id": "SYNTHETIC-c-model",
+      "task_id": "SYNTHETIC-claude",
+      "agent": "claude-code",
+      "timestamp": "2026-10-01T09:00:00Z",
+      "kind": "model",
+      "status": "success",
+      "synthetic": true,
+      "model": "SYNTHETIC-model",
+      "input_tokens": 200000,
+      "cached_tokens": 20000,
+      "output_tokens": 30000,
+      "source_line": 1
+    },
+    {
+      "schema_version": "1.0",
+      "id": "SYNTHETIC-c-tool",
+      "task_id": "SYNTHETIC-claude",
+      "agent": "claude-code",
+      "timestamp": "2026-10-01T09:00:10Z",
+      "kind": "tool",
+      "status": "success",
+      "synthetic": true,
+      "action": "search",
+      "amount": "0.04",
+      "currency": "USD",
+      "origin": "actual",
+      "source_line": 2
+    },
+    {
+      "schema_version": "1.0",
+      "id": "SYNTHETIC-c-end",
+      "task_id": "SYNTHETIC-claude",
+      "agent": "claude-code",
+      "timestamp": "2026-10-01T09:00:22Z",
+      "kind": "task",
+      "status": "success",
+      "synthetic": true,
+      "source_line": 3
+    }
+  ],
+  "tasks": [
+    {
+      "task_id": "SYNTHETIC-claude",
+      "agent": "claude-code",
+      "task_key": "SYNTHETIC-fix-parser",
+      "difficulty": "easy",
+      "acceptance_id": "SYNTHETIC-parser-tests-v1",
+      "status": "success",
+      "accepted": true,
+      "baseline_minutes": "60",
+      "baseline_verified": false,
+      "human_minutes": "20",
+      "rework_minutes": "0",
+      "hourly_rate": "36",
+      "currency": "USD",
+      "synthetic": true
+    }
+  ],
+  "warnings": []
+}

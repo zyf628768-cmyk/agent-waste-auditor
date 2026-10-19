@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0",
+  "source_format": "csv",
+  "profile": "agentwaste-1.0",
+  "source_records": 3,
+  "events": [
+    {
+      "agent": "codex",
+      "cached_tokens": 40000,
+      "duration_ms": 5000,
+      "id": "SYNTHETIC-s-model",
+      "input_tokens": 100000,
+      "kind": "model",
+      "model": "SYNTHETIC-model",
+      "output_tokens": 20000,
+      "schema_version": "1.0",
+      "status": "success",
+      "synthetic": true,
+      "task_id": "SYNTHETIC-success",
+      "timestamp": "2026-10-01T09:00:00Z",
+      "source_line": 2
+    },
+    {
+      "action": "search",
+      "agent": "codex",
+      "amount": "0.02",
+      "currency": "USD",
+      "id": "SYNTHETIC-s-tool",
+      "kind": "tool",
+      "origin": "actual",
+      "schema_version": "1.0",
+      "signature": "7a6eb5d380e537061f0dced7dd64999a8962f1d4b67c2ad0a7c349f7806f3825",
+      "status": "success",
+      "synthetic": true,
+      "task_id": "SYNTHETIC-success",
+      "timestamp": "2026-10-01T09:00:06Z",
+      "source_line": 3
+    },
+    {
+      "agent": "codex",
+      "id": "SYNTHETIC-s-end",
+      "kind": "task",
+      "schema_version": "1.0",
+      "status": "success",
+      "synthetic": true,
+      "task_id": "SYNTHETIC-success",
+      "timestamp": "2026-10-01T09:00:12Z",
+      "source_line": 4
+    }
+  ],
+  "tasks": [],
+  "warnings": []
+}

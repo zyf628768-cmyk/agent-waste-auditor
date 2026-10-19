@@ -1,0 +1,178 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agentwaste.invalid/schemas/dataset.schema.json",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "events",
+    "tasks",
+    "warnings"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "schema_version",
+          "id",
+          "task_id",
+          "agent",
+          "timestamp",
+          "kind"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "schema_version": {
+            "const": "1.0"
+          },
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "task_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "agent": {
+            "type": "string",
+            "minLength": 1
+          },
+          "model": {
+            "type": "string",
+            "minLength": 1
+          },
+          "action": {
+            "type": "string",
+            "minLength": 1
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "kind": {
+            "enum": [
+              "model",
+              "tool",
+              "human",
+              "wait",
+              "task"
+            ]
+          },
+          "status": {
+            "enum": [
+              "success",
+              "failed",
+              "timeout",
+              "unknown",
+              "running"
+            ]
+          },
+          "category": {
+            "enum": [
+              "model",
+              "tool",
+              "failure",
+              "rework",
+              "wait",
+              "quality"
+            ]
+          },
+          "origin": {
+            "enum": [
+              "actual",
+              "estimated",
+              "manual"
+            ]
+          },
+          "amount": {
+            "type": "string",
+            "pattern": "^\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?$"
+          },
+          "currency": {
+            "type": "string",
+            "pattern": "^[A-Z]{3}$"
+          },
+          "retry_reason": {
+            "enum": [
+              "unknown",
+              "transient",
+              "user_requested",
+              "idempotent_check"
+            ]
+          },
+          "input_tokens": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "output_tokens": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "cached_tokens": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "cache_write_tokens": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "duration_ms": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "queue_ms": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "human_wait_ms": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "source_line": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "synthetic": {
+            "type": "boolean"
+          },
+          "progress": {
+            "type": "boolean"
+          },
+          "signature": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "context_signature": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        },
+        "dependentRequired": {
+          "amount": [
+            "currency",
+            "origin"
+          ]
+        }
+      }
+    },
+    "tasks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "task_id"
+        ]
+      }
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

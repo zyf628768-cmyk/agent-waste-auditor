@@ -1,0 +1,18 @@
+[
+  {
+    "task_id": "SYNTHETIC-claude",
+    "agent": "claude-code",
+    "task_key": "SYNTHETIC-fix-parser",
+    "difficulty": "easy",
+    "acceptance_id": "SYNTHETIC-parser-tests-v1",
+    "status": "success",
+    "accepted": true,
+    "baseline_minutes": "60",
+    "baseline_verified": false,
+    "human_minutes": "20",
+    "rework_minutes": "0",
+    "hourly_rate": "36",
+    "currency": "USD",
+    "synthetic": true
+  }
+]

@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "source_format": "codex",
+  "profile": "codex-rollout-structural-v1",
+  "source_records": 3,
+  "events": [
+    {
+      "schema_version": "1.0",
+      "id": "codex-3",
+      "task_id": "SYNTHETIC-native-codex",
+      "agent": "codex",
+      "timestamp": "2026-10-01T00:00:00Z",
+      "source_line": 3,
+      "kind": "model",
+      "model": "SYNTHETIC-model",
+      "input_tokens": 1000,
+      "output_tokens": 200,
+      "cached_tokens": 400
+    }
+  ],
+  "tasks": [],
+  "warnings": [
+    "EXPERIMENTAL_CODEX_PROFILE",
+    "NATIVE_TASK_OUTCOME_UNAVAILABLE"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agentwaste.invalid/schemas/comparison.schema.json",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "report_type",
+    "groups",
+    "excluded",
+    "caution"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "report_type": {
+      "const": "comparison"
+    },
+    "groups": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "task_key",
+          "difficulty",
+          "acceptance_id",
+          "cost_coverage_complete",
+          "comparable",
+          "agents"
+        ]
+      }
+    },
+    "excluded": {
+      "type": "array"
+    },
+    "caution": {
+      "type": "string"
+    }
+  }
+}

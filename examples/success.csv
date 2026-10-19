@@ -1,0 +1,4 @@
+action,agent,amount,cached_tokens,currency,duration_ms,id,input_tokens,kind,model,origin,output_tokens,schema_version,signature,status,synthetic,task_id,timestamp
+,codex,,40000,,5000,SYNTHETIC-s-model,100000,model,SYNTHETIC-model,,20000,1.0,,success,true,SYNTHETIC-success,2026-10-01T09:00:00Z
+search,codex,0.02,,USD,,SYNTHETIC-s-tool,,tool,,actual,,1.0,SYNTHETIC-query,success,true,SYNTHETIC-success,2026-10-01T09:00:06Z
+,codex,,,,,SYNTHETIC-s-end,,task,,,,1.0,,success,true,SYNTHETIC-success,2026-10-01T09:00:12Z

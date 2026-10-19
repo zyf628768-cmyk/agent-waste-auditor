@@ -1,0 +1,3 @@
+{"type": "session_meta", "payload": {"id": "SYNTHETIC-native-codex", "cli_version": "0.142.0"}}
+{"type": "turn_context", "payload": {"model": "SYNTHETIC-model"}}
+{"type": "event_msg", "timestamp": "2026-10-01T00:00:00Z", "payload": {"type": "token_count", "info": {"total_token_usage": {"input_tokens": 1000, "cached_input_tokens": 400, "output_tokens": 200}}}}

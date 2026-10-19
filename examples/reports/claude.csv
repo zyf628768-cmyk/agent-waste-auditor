@@ -1,0 +1,5 @@
+task_id,event_id,category,amount,currency,origin,price_id
+SYNTHETIC-claude,SYNTHETIC-c-model,model,0.61,USD,estimated,SYNTHETIC-2026-v1
+SYNTHETIC-claude,SYNTHETIC-c-tool,tool,0.04,USD,actual,
+SYNTHETIC-claude,task-human-human_minutes,human,12,USD,manual,
+SYNTHETIC-claude,task-human-rework_minutes,rework,0,USD,manual,

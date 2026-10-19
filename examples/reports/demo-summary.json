@@ -1,0 +1,74 @@
+{
+  "success": {
+    "totals": {
+      "USD": {
+        "actual": "0.02",
+        "estimated": "0.3",
+        "manual": "6"
+      }
+    },
+    "findings": 0,
+    "rules": [],
+    "roi": {
+      "status": "scenario_estimate",
+      "currency": "USD",
+      "baseline_cost": "36",
+      "total_cost": "6.32",
+      "net_savings": "29.68",
+      "roi": "4.696202531645569620253164557",
+      "assumptions": [
+        "user-entered baseline and human effort",
+        "rework minutes exclude other human minutes",
+        "ROI = (baseline - task cost) / task cost; zero cost has undefined ROI"
+      ]
+    }
+  },
+  "waste": {
+    "totals": {
+      "USD": {
+        "actual": "2.42",
+        "estimated": "0.1254",
+        "manual": "27.50"
+      }
+    },
+    "findings": 9,
+    "rules": [
+      "alternating_loop",
+      "context_reload",
+      "cost_after_failure",
+      "cost_without_progress",
+      "repeated_call",
+      "repeated_failure",
+      "repeated_read",
+      "unverified_rework"
+    ],
+    "roi": {
+      "status": "unavailable",
+      "reason": "task not successfully accepted"
+    }
+  },
+  "claude": {
+    "totals": {
+      "USD": {
+        "actual": "0.04",
+        "estimated": "0.61",
+        "manual": "12"
+      }
+    },
+    "findings": 0,
+    "rules": [],
+    "roi": {
+      "status": "scenario_estimate",
+      "currency": "USD",
+      "baseline_cost": "36",
+      "total_cost": "12.65",
+      "net_savings": "23.35",
+      "roi": "1.845849802371541501976284585",
+      "assumptions": [
+        "user-entered baseline and human effort",
+        "rework minutes exclude other human minutes",
+        "ROI = (baseline - task cost) / task cost; zero cost has undefined ROI"
+      ]
+    }
+  }
+}

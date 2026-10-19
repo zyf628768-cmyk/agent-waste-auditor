@@ -1,0 +1,1 @@
+{"type": "assistant", "version": "2.0.0", "sessionId": "SYNTHETIC-native-claude", "timestamp": "2026-10-01T00:00:00Z", "message": {"id": "SYNTHETIC-msg", "model": "SYNTHETIC-model", "usage": {"input_tokens": 600, "cache_read_input_tokens": 400, "cache_creation_input_tokens": 0, "output_tokens": 200}, "content": [{"type": "text", "text": "SYNTHETIC content discarded"}]}}

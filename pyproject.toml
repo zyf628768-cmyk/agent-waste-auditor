@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agent-waste-auditor"
+version = "0.1.0"
+description = "Find the Hidden Cost of AI Work. Offline task economics auditing."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+authors = [{name = "AgentWaste contributors"}]
+dependencies = []
+
+[project.optional-dependencies]
+test = ["jsonschema>=4.20,<5"]
+
+[project.scripts]
+agentwaste = "agentwaste.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["agentwaste*"]
+

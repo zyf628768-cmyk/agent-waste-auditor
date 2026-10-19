@@ -1,0 +1,3 @@
+{"schema_version": "1.0", "id": "SYNTHETIC-c-model", "task_id": "SYNTHETIC-claude", "agent": "claude-code", "timestamp": "2026-10-01T09:00:00Z", "kind": "model", "status": "success", "synthetic": true, "model": "SYNTHETIC-model", "input_tokens": 200000, "cached_tokens": 20000, "output_tokens": 30000}
+{"schema_version": "1.0", "id": "SYNTHETIC-c-tool", "task_id": "SYNTHETIC-claude", "agent": "claude-code", "timestamp": "2026-10-01T09:00:10Z", "kind": "tool", "status": "success", "synthetic": true, "action": "search", "amount": "0.04", "currency": "USD", "origin": "actual"}
+{"schema_version": "1.0", "id": "SYNTHETIC-c-end", "task_id": "SYNTHETIC-claude", "agent": "claude-code", "timestamp": "2026-10-01T09:00:22Z", "kind": "task", "status": "success", "synthetic": true}
